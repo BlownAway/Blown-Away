@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<array name="wirecolors">
+		<item>"green"</item>
+		<item>"yellow"</item>
+		<item>"red"</item>
+		<item>"black"</item>
+		<item>"blue"</item>
+		<item>"orange"</item>
+		<item>"grey"</item>
+		<item>"white"</item>
+	</array>
+	<array name="wirelocations">
+		<item>"north"</item>
+				<item>"west"</item>
+		
+		<item>"south"</item>
+				<item>"east"</item>
+		
+	</array>
+</resources>

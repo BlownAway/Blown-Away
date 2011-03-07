@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<Button
+android:id="@+id/newgame"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="New Game"
+>
+</Button>
+ <Button
+android:id="@+id/resumegame"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Resume Game"
+>
+</Button>
+<Button
+android:id="@+id/instructions"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Instructions"
+>
+</Button>
+ <Button
+android:id="@+id/hiscore"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="High Score"
+>
+</Button>
+ <Button
+android:id="@+id/exit"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Exit"
+>
+</Button>
+
+
+
+
+
+</LinearLayout>

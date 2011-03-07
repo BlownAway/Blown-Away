@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    
+ <TextView
+android:id="@+id/instructionstv"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Diffuse the bomb before the time runs out by following the diffusion instructions. Notice that viewing the instructions more than once will cost you extra time!"
+></TextView>
+<Button
+android:id="@+id/okbutton"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="ok"
+></Button>
+
+</LinearLayout>
