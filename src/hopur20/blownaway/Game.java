@@ -12,17 +12,23 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class Game extends Activity implements OnClickListener, BombStateListener {
-    /** Called when the activity is first created. */
 
-	private Level level;
+	private Level level; //Borðið sem verið er að spila.
     
+  
+	/*
+	 * Kallað þegar nýr leikur er ræstur.
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_layout);
+        
+        // Búum til nýtt level.
         level = new Level(3,4,30);
         level.getBomb().addStateListener(this);
                 
-        
+        // Framköllum leiðbeiningar fyrir aftengingu sprengju.
         String instructions = "To defuse the bomb, you must cut: \n";
         for(int i =0; i!=level.getColorSummary().length;i++){
         	instructions+="  " + level.getColorSummary()[i] +
@@ -33,8 +39,7 @@ public class Game extends Activity implements OnClickListener, BombStateListener
         	              " on the "  + this.getResources().getStringArray(R.array.wirelocations)[j] 
         	                          + " side\n";
         }
-        
-		final AlertDialog helpDialog = new AlertDialog.Builder(this)
+        final AlertDialog helpDialog = new AlertDialog.Builder(this)
         .setMessage(instructions)
         .setPositiveButton("Ok", new android.content.DialogInterface.OnClickListener(){
 
@@ -44,6 +49,8 @@ public class Game extends Activity implements OnClickListener, BombStateListener
         	
         })
         .show();
+        
+        //Virkjum takkana fyrir vírana.
         Button greennorth = (Button) findViewById(R.id.greennorth);
         greennorth.setOnClickListener(this);
         Button yellownorth = (Button) findViewById(R.id.yellownorth);
@@ -69,6 +76,7 @@ public class Game extends Activity implements OnClickListener, BombStateListener
         Button redeast = (Button) findViewById(R.id.redeast);
         redeast.setOnClickListener(this);
         
+        //Virkjum takkann til að sýna leiðbeiningar
         Button help = (Button) findViewById(R.id.help);
         help.setOnClickListener(new OnClickListener(){
 
@@ -81,6 +89,10 @@ public class Game extends Activity implements OnClickListener, BombStateListener
     }
 
 
+	/*
+	 * Slökkvum á klukkunni þegar farið er út úr leik með því að ýta á back.
+	 * @see android.app.Activity#onKeyDown(int, android.view.KeyEvent)
+	 */
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if(keyCode == KeyEvent.KEYCODE_BACK){
 			level.getBomb().cancel();
@@ -88,7 +100,10 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 		return super.onKeyDown(keyCode, event);
 	}
 
-
+	/*
+	 * Klippum á tilsvarandi vír þegar ýtt er á einhvern takka.
+	 * @see android.view.View.OnClickListener#onClick(android.view.View)
+	 */
 	public void onClick(View clicked) {
 		
 		clicked.setBackgroundColor(R.color.black);
@@ -133,6 +148,10 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 		
 	}
 
+	/*
+	 * Birtum tilkynningu þegar sprengjan er aftengd.
+	 * @see hopur20.blownaway.BombStateListener#onBombDefused(long)
+	 */
 	public void onBombDefused(long timeRemaining) {
 		new AlertDialog.Builder(this).setPositiveButton("Ok", new android.content.DialogInterface.OnClickListener(){
         	public void onClick(DialogInterface arg0, int arg1) {
@@ -142,7 +161,10 @@ public class Game extends Activity implements OnClickListener, BombStateListener
         }).setMessage("Congratulations, you defused the bomb!").show();
 	}
 
-
+	/*
+	 * Birtum tilkynningu þegar sprenfjan springur.
+	 * @see hopur20.blownaway.BombStateListener#onBombExploded()
+	 */
 	public void onBombExploded(){
 		new AlertDialog.Builder(this).setPositiveButton("Ok", new android.content.DialogInterface.OnClickListener(){
         	public void onClick(DialogInterface arg0, int arg1) {
@@ -153,6 +175,10 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 		
 	}
 
+	/*
+	 * Birtum tíma sem eftir er á klukku.
+	 * @see hopur20.blownaway.BombStateListener#onTick(long)
+	 */
 	public void onTick(long timeRemaining) {
 		 TextView timerDisplay = (TextView) findViewById(R.id.timer);
 		 timerDisplay.setText("seconds remaining: " + timeRemaining);

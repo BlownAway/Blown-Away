@@ -10,7 +10,7 @@
   </class>  
   <interface corner="BOTTOM_RIGHT" language="java" name="hopur20.blownaway.BombStateListener" project="Blown Away" 
     file="/Blown Away/src/hopur20/blownaway/BombStateListener.java" binary="false">    
-    <position x="331" y="191" width="-1" height="-1"/>    
+    <position x="341" y="171" width="-1" height="-1"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -58,18 +58,6 @@
       file="/Blown Away/src/hopur20/blownaway/BombStateListener.java" binary="false" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency>    
-    <source project="Blown Away" name="hopur20.blownaway.MainMenu" 
-      file="/Blown Away/src/hopur20/blownaway/MainMenu.java" binary="false"/>    
-    <target project="Blown Away" name="hopur20.blownaway.Game" file="/Blown Away/src/hopur20/blownaway/Game.java" 
-      binary="false"/>  
-  </dependency>  
-  <realization>    
-    <source project="Blown Away" name="hopur20.blownaway.Game" file="/Blown Away/src/hopur20/blownaway/Game.java" 
-      binary="false"/>    
-    <target project="Blown Away" name="hopur20.blownaway.BombStateListener" 
-      file="/Blown Away/src/hopur20/blownaway/BombStateListener.java" binary="false"/>  
-  </realization>  
   <association>    
     <source project="Blown Away" name="hopur20.blownaway.Level" file="/Blown Away/src/hopur20/blownaway/Level.java" 
       binary="false" navigable="false">      
@@ -77,16 +65,6 @@
       <multiplicity minimum="0" maximum="1"/>    
     </source>    
     <target project="Blown Away" name="hopur20.blownaway.Bomb" file="/Blown Away/src/hopur20/blownaway/Bomb.java" 
-      binary="false" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association>    
-    <source project="Blown Away" name="hopur20.blownaway.Bomb" file="/Blown Away/src/hopur20/blownaway/Bomb.java" 
-      binary="false" navigable="false">      
-      <attribute name="wires"/>      
-      <multiplicity minimum="0" maximum="2147483647"/>    
-    </source>    
-    <target project="Blown Away" name="hopur20.blownaway.Wire" file="/Blown Away/src/hopur20/blownaway/Wire.java" 
       binary="false" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
@@ -100,6 +78,28 @@
       binary="false" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <dependency>    
+    <source project="Blown Away" name="hopur20.blownaway.MainMenu" 
+      file="/Blown Away/src/hopur20/blownaway/MainMenu.java" binary="false"/>    
+    <target project="Blown Away" name="hopur20.blownaway.Game" file="/Blown Away/src/hopur20/blownaway/Game.java" 
+      binary="false"/>  
+  </dependency>  
+  <association>    
+    <source project="Blown Away" name="hopur20.blownaway.Bomb" file="/Blown Away/src/hopur20/blownaway/Bomb.java" 
+      binary="false" navigable="false">      
+      <attribute name="wires"/>      
+      <multiplicity minimum="0" maximum="2147483647"/>    
+    </source>    
+    <target project="Blown Away" name="hopur20.blownaway.Wire" file="/Blown Away/src/hopur20/blownaway/Wire.java" 
+      binary="false" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization>    
+    <source project="Blown Away" name="hopur20.blownaway.Game" file="/Blown Away/src/hopur20/blownaway/Game.java" 
+      binary="false"/>    
+    <target project="Blown Away" name="hopur20.blownaway.BombStateListener" 
+      file="/Blown Away/src/hopur20/blownaway/BombStateListener.java" binary="false"/>  
+  </realization>  
   <classifier-display autosize="true" package="true" initial-value="false" signature="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true"/>    
     <operations public="true" package="true" protected="true" private="true"/>  

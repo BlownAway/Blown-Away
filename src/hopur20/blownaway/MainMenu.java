@@ -13,11 +13,16 @@ import android.widget.Button;
 
 public class MainMenu extends Activity{
 	
-	    @Override
+	    /* 
+	     * Kallað þegar forritið er ræst.
+	     * @see android.app.Activity#onCreate(android.os.Bundle)
+	     */
 		public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
 	       	        
 	        setContentView(R.layout.main);
+	        
+	        //Virkjum hnappinn fyrir nýjan leik til að ræsa Game Activity.
 	        Button newgamebutton = (Button) findViewById(R.id.newgame);
 	        newgamebutton.setOnClickListener(new OnClickListener(){
 
@@ -34,20 +39,20 @@ public class MainMenu extends Activity{
 	        	
 	        });
 	        Button resumegamebutton = (Button) findViewById(R.id.resumegame);
-	        Button instructionsbutton = (Button) findViewById(R.id.instructions);
 	        Button highscorebutton = (Button) findViewById(R.id.hiscore);
+	        
+	        // Virkjum exit takkann.
 	        Button exitbutton = (Button) findViewById(R.id.exit);
-	        
-	        
 	        OnClickListener exitListener = new OnClickListener(){
 	        	public void onClick(View V)
 	        	{
 	        		finish();
 	        	}
 	        };
-	        
 	        exitbutton.setOnClickListener(exitListener);
 	        
+	        // Virkjum leiðbeiningatakkann.
+	        Button instructionsbutton = (Button) findViewById(R.id.instructions);
 	        OnClickListener instructionsListener = new OnClickListener(){
 	        	public void onClick(View V)
 	        	{
