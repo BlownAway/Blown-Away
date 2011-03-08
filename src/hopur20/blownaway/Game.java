@@ -3,49 +3,25 @@ package hopur20.blownaway;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.os.CountDownTimer;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class Game extends Activity implements OnClickListener {
+public class Game extends Activity implements OnClickListener, BombStateListener {
     /** Called when the activity is first created. */
 
 	private Level level;
-	private CountDownTimer timer;
     
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_layout);
         level = new Level(3,4,30);
+        level.getBomb().addStateListener(this);
                 
-        final TextView mTextField = (TextView) findViewById(R.id.timer);
-        
-        timer = new CountDownTimer(level.getTime()*1000, 1000) {
-
-            public void onTick(long millisUntilFinished) {
-                mTextField.setText("seconds remaining: " + millisUntilFinished / 1000);
-            }
-
-            public void onFinish() {
-                mTextField.setText("done!");
-        		new AlertDialog.Builder( mTextField.getContext())
-        	    .setMessage("The bomb exploded!")
-        	    .setPositiveButton("Ok", new android.content.DialogInterface.OnClickListener(){
-	        	public void onClick(DialogInterface arg0, int arg1) {
-	        		arg0.dismiss();
-	        		finish();
-	        	}
-	        })
-        	    .show();
-            }
-         }.start();
-
-      
         
         String instructions = "To defuse the bomb, you must cut: \n";
         for(int i =0; i!=level.getColorSummary().length;i++){
@@ -100,20 +76,18 @@ public class Game extends Activity implements OnClickListener {
 				helpDialog.show();
 			}
         	
-        });
-        
-        Button quit = (Button) findViewById(R.id.quit);
-        quit.setOnClickListener(new OnClickListener(){
-
-			public void onClick(View arg0) {
-				timer.cancel();
-				finish();
-			}
-        	
-        });
-        
+        });  
 
     }
+
+
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if(keyCode == KeyEvent.KEYCODE_BACK){
+			level.getBomb().cancel();
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+
 
 	public void onClick(View clicked) {
 		
@@ -156,27 +130,31 @@ public class Game extends Activity implements OnClickListener {
 				level.getBomb().cutWire(3, 2);
 				break;
 		}
+		
+	}
 
-		final Context c = clicked.getContext();
+	public void onBombDefused(long timeRemaining) {
+		new AlertDialog.Builder(this).setPositiveButton("Ok", new android.content.DialogInterface.OnClickListener(){
+        	public void onClick(DialogInterface arg0, int arg1) {
+        		arg0.dismiss();
+        		finish();
+        	}
+        }).setMessage("Congratulations, you defused the bomb!").show();
+	}
+
+
+	public void onBombExploded(){
+		new AlertDialog.Builder(this).setPositiveButton("Ok", new android.content.DialogInterface.OnClickListener(){
+        	public void onClick(DialogInterface arg0, int arg1) {
+        		arg0.dismiss();
+        		finish();
+        	}
+        }).setMessage("The bomb exploded!").show();
 		
-		if(level.getBomb().hasExploded()){
-			timer.cancel();
-			new AlertDialog.Builder(c).setPositiveButton("Ok", new android.content.DialogInterface.OnClickListener(){
-	        	public void onClick(DialogInterface arg0, int arg1) {
-	        		arg0.dismiss();
-	        		finish();
-	        	}
-	        }).setMessage("The bomb exploded!").show();
-		}
-		if(level.getBomb().isDefused()){
-			timer.cancel();
-			new AlertDialog.Builder(c).setPositiveButton("Ok", new android.content.DialogInterface.OnClickListener(){
-	        	public void onClick(DialogInterface arg0, int arg1) {
-	        		arg0.dismiss();
-	        		finish();
-	        	}
-	        }).setMessage("Congratulations, you defused the bomb!").show();
-		}
-		
+	}
+
+	public void onTick(long timeRemaining) {
+		 TextView timerDisplay = (TextView) findViewById(R.id.timer);
+		 timerDisplay.setText("seconds remaining: " + timeRemaining);
 	}
 }

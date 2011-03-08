@@ -4,6 +4,7 @@ android:id="@+id/widget61"
 android:layout_width="fill_parent"
 android:layout_height="fill_parent"
 android:orientation="vertical"
+android:background = "@color/grey"
 xmlns:android="http://schemas.android.com/apk/res/android"
 >
 <LinearLayout
@@ -16,7 +17,7 @@ android:id="@+id/help"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:padding="10px"
-android:text="Help"
+android:text="Instructions"
 >
 </Button>
 <LinearLayout
@@ -39,8 +40,9 @@ android:text="TextView"
 android:id="@+id/widget40"
 android:layout_width="250px"
 android:layout_height="250px"
-android:layout_weight="1"
+android:layout_weight="0"
 android:layout_gravity="center_horizontal"
+android:background = "@color/black"
 >
 <Button
 android:id="@+id/greennorth"
@@ -151,19 +153,19 @@ android:layout_y="150px"
 >
 </Button>
 </AbsoluteLayout>
-<LinearLayout
-android:id="@+id/widget178"
-android:layout_width="fill_parent"
-android:layout_height="wrap_content"
-android:gravity="right"
->
-<Button
-android:id="@+id/quit"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:padding="10px"
-android:text="Quit"
->
-</Button>
-</LinearLayout>
+<!--<LinearLayout-->
+<!--android:id="@+id/widget178"-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="fill_parent"-->
+<!--android:gravity="right"-->
+<!-->-->
+<!--<Button-->
+<!--android:id="@+id/quit"-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:padding="10px"-->
+<!--android:text="Quit"-->
+<!-->-->
+<!--</Button>-->
+<!--</LinearLayout>-->
 </LinearLayout>
