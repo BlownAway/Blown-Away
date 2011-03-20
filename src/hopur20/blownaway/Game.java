@@ -25,7 +25,7 @@ public class Game extends Activity implements OnClickListener, BombStateListener
         setContentView(R.layout.game_layout);
         
         // Búum til nýtt level.
-        level = new Level(3,4,30);
+        level = new Level(9);
         level.getBomb().addStateListener(this);
                 
         // Framköllum leiðbeiningar fyrir aftengingu sprengju.
@@ -117,22 +117,22 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 			case R.id.rednorth:
 				level.getBomb().cutWire(0, 2);
 				break;
-			case R.id.greenwest:
+			case R.id.greensouth:
 				level.getBomb().cutWire(1,0);
 				break;
-			case R.id.yellowwest:
+			case R.id.yellowsouth:
 				level.getBomb().cutWire(1, 1);
 				break;
-			case R.id.redwest:
+			case R.id.redsouth:
 				level.getBomb().cutWire(1, 2);
 				break;
-			case R.id.greensouth:
+			case R.id.greenwest:
 				level.getBomb().cutWire(2, 0);
 				break;
-			case R.id.yellowsouth:
+			case R.id.yellowwest:
 				level.getBomb().cutWire(2,1);
 				break;
-			case R.id.redsouth:
+			case R.id.redwest:
 				level.getBomb().cutWire(2, 2);
 				break;
 			case R.id.greeneast:

@@ -12,10 +12,9 @@
 	</array>
 	<array name="wirelocations">
 		<item>"north"</item>
-				<item>"west"</item>
-		
 		<item>"south"</item>
-				<item>"east"</item>
+		<item>"west"</item>
+		<item>"east"</item>
 		
 	</array>
 </resources>
