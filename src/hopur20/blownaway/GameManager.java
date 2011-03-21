@@ -15,14 +15,17 @@ public class GameManager extends Activity implements OnClickListener {
 	 * Kallað þegar nýr leikur er ræstur.
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
-	int currentLevel=1;
+	private int currentLevel=1;
+	private int score = 0;
 	Button okbutton,quitbutton;
-	TextView title;
+	TextView title,summary;
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.betweenlevelmenu);
 		title = (TextView) findViewById(R.id.titletv);
 		title.setText("Blown Away");
+		summary = (TextView) findViewById(R.id.summarytv);
+		summary.setText("Diffuse the bomb before the time runs out by following the diffusion instructions. Notice that viewing the instructions more than once will cost you extra time!");
 		okbutton = (Button) findViewById(R.id.okbutton);
 		okbutton.setText("Start Game");
 		quitbutton = (Button) findViewById(R.id.quitbutton);
@@ -35,6 +38,8 @@ public class GameManager extends Activity implements OnClickListener {
 	protected void onActivityResult(int levelnumber, int resultcode, Intent data) {
 		if(resultcode == RESULT_OK){
 			title.setText("Level "+currentLevel+ " completed!");
+			score += currentLevel*100+data.getIntExtra("score", 0);
+			summary.setText("Your score so far: "+score);
 			currentLevel++;
 			okbutton.setText("Next level");
 		}

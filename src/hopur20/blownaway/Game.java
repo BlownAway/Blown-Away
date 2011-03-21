@@ -4,6 +4,7 @@ package hopur20.blownaway;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 public class Game extends Activity implements OnClickListener, BombStateListener {
 
 	private Level level; //Borðið sem verið er að spila.
+	private int levelScore;
     
   
 	/*
@@ -21,6 +23,7 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
 	public void onCreate(Bundle savedInstanceState) {
+		levelScore = 0;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_layout);
         int levelNumber = this.getIntent().getIntExtra("hopur20.blownaway.Game.LEVEL_NUMBER", 1);
@@ -154,7 +157,10 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 	 * @see hopur20.blownaway.BombStateListener#onBombDefused(long)
 	 */
 	public void onBombDefused(long timeRemaining) {
-		this.setResult(RESULT_OK);
+		levelScore = (int) timeRemaining*10;
+		Intent data = new Intent();
+		data.putExtra("score", levelScore);
+		this.setResult(RESULT_OK,data);
 		finish();
 //		new AlertDialog.Builder(this).setPositiveButton("Ok", new android.content.DialogInterface.OnClickListener(){
 //        	public void onClick(DialogInterface arg0, int arg1) {

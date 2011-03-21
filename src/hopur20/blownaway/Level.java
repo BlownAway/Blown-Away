@@ -19,23 +19,23 @@ public class Level {
 	 */
 	
 	private Bomb bomb;
-	private int time,numColors,numLocations;
+	private int time,numColors,numLocations,levelScore;
 	private int[] locSummary;
 	private int[] colorSummary;
 	
 	/*
 	 * Notkun: level = new Level(n)
-	 * Fyrir: @param n <= 15 er númer borðs.
+	 * Fyrir: @param 0<n <= 15 er númer borðs.
 	 */
 	public Level(int levelNumber){
-		int difficulty = levelNumber%5;
-		if(levelNumber < 5){
+		int difficulty = levelNumber%4;
+		if(levelNumber < 4){
 			numColors = 3;
 			numLocations = 2;
 			this.time = 40-difficulty*10;
 		}
 		else{
-			if(levelNumber <10){
+			if(levelNumber <12){
 				numColors = 3;
 				numLocations =4;
 				this.time = 30-difficulty*2;
@@ -57,13 +57,13 @@ public class Level {
 				double colorSaturation = colorSummary[j]/((double) numLocations);
 				
 				double p = 1;
-				if(sideSaturation>0&difficulty<2){
-					p= Math.pow(2*(sideSaturation-0.5), (5-difficulty)*2.0)/2
-					  +Math.pow(2*(colorSaturation-0.5),(5-difficulty)*2.0)/2;
+				if(sideSaturation>0&&levelNumber<8){
+					p= Math.pow(2*(sideSaturation-0.5), (4-difficulty)*2.0)/2
+					  +Math.pow(2*(colorSaturation-0.5),(4-difficulty)*2.0)/2;
 				}
 				else{
-					p = 1-Math.pow(2*(sideSaturation-0.5), (5-difficulty)*2.0)/2
-					     -Math.pow(2*(colorSaturation-0.5),(5-difficulty)*2.0)/2;
+					p = 1-Math.pow(2*(sideSaturation-0.5), (4-difficulty)*2.0)/2
+					     -Math.pow(2*(colorSaturation-0.5),(4-difficulty)*2.0)/2;
 				}
 				if(generator.nextDouble()>p){
 					locSummary[i]++;
