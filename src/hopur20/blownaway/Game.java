@@ -9,6 +9,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class Game extends Activity implements OnClickListener, BombStateListener {
@@ -25,7 +26,7 @@ public class Game extends Activity implements OnClickListener, BombStateListener
         setContentView(R.layout.game_layout);
         
         // Búum til nýtt level.
-        level = new Level(9);
+        level = new Level(5);
         level.getBomb().addStateListener(this);
                 
         // Framköllum leiðbeiningar fyrir aftengingu sprengju.
@@ -51,29 +52,29 @@ public class Game extends Activity implements OnClickListener, BombStateListener
         .show();
         
         //Virkjum takkana fyrir vírana.
-        Button greennorth = (Button) findViewById(R.id.greennorth);
+        ImageButton greennorth = (ImageButton) findViewById(R.id.greennorth);
         greennorth.setOnClickListener(this);
-        Button yellownorth = (Button) findViewById(R.id.yellownorth);
+        ImageButton yellownorth = (ImageButton) findViewById(R.id.yellownorth);
         yellownorth.setOnClickListener(this);
-        Button rednorth = (Button) findViewById(R.id.rednorth);
+        ImageButton rednorth = (ImageButton) findViewById(R.id.rednorth);
         rednorth.setOnClickListener(this);
-        Button greenwest = (Button) findViewById(R.id.greenwest);
+        ImageButton greenwest = (ImageButton) findViewById(R.id.greenwest);
         greenwest.setOnClickListener(this);
-        Button yellowwest = (Button) findViewById(R.id.yellowwest);
+        ImageButton yellowwest = (ImageButton) findViewById(R.id.yellowwest);
         yellowwest.setOnClickListener(this);
-        Button redwest = (Button) findViewById(R.id.redwest);
+        ImageButton redwest = (ImageButton) findViewById(R.id.redwest);
         redwest.setOnClickListener(this);
-        Button greensouth = (Button) findViewById(R.id.greensouth);
+        ImageButton greensouth = (ImageButton) findViewById(R.id.greensouth);
         greensouth.setOnClickListener(this);
-        Button yellowsouth = (Button) findViewById(R.id.yellowsouth);
+        ImageButton yellowsouth = (ImageButton) findViewById(R.id.yellowsouth);
         yellowsouth.setOnClickListener(this);
-        Button redsouth = (Button) findViewById(R.id.redsouth);
+        ImageButton redsouth = (ImageButton) findViewById(R.id.redsouth);
         redsouth.setOnClickListener(this);
-        Button greeneast = (Button) findViewById(R.id.greeneast);
+        ImageButton greeneast = (ImageButton) findViewById(R.id.greeneast);
         greeneast.setOnClickListener(this);
-        Button yelloweast = (Button) findViewById(R.id.yelloweast);
+        ImageButton yelloweast = (ImageButton) findViewById(R.id.yelloweast);
         yelloweast.setOnClickListener(this);
-        Button redeast = (Button) findViewById(R.id.redeast);
+        ImageButton redeast = (ImageButton) findViewById(R.id.redeast);
         redeast.setOnClickListener(this);
         
         //Virkjum takkann til að sýna leiðbeiningar
@@ -106,7 +107,8 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 	 */
 	public void onClick(View clicked) {
 		
-		clicked.setBackgroundColor(R.color.black);
+		//clicked.setBackgroundColor(R.color.orange);
+		clicked.setVisibility(View.INVISIBLE);
 		switch(clicked.getId()){
 			case R.id.greennorth:
 				level.getBomb().cutWire(0,0);
@@ -181,6 +183,6 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 	 */
 	public void onTick(long timeRemaining) {
 		 TextView timerDisplay = (TextView) findViewById(R.id.timer);
-		 timerDisplay.setText("seconds remaining: " + timeRemaining);
+		 timerDisplay.setText("Time: " + timeRemaining);
 	}
 }
