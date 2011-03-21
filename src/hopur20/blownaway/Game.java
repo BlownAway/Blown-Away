@@ -112,45 +112,33 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 	 */
 	public void onClick(View clicked) {
 		
-		clicked.setBackgroundColor(R.color.black);
-		switch(clicked.getId()){
-			case R.id.greennorth:
-				level.getBomb().cutWire(0,0);
-				break;
-			case R.id.yellownorth:
-				level.getBomb().cutWire(0, 1);
-				break;
-			case R.id.rednorth:
-				level.getBomb().cutWire(0, 2);
-				break;
-			case R.id.greensouth:
-				level.getBomb().cutWire(1,0);
-				break;
-			case R.id.yellowsouth:
-				level.getBomb().cutWire(1, 1);
-				break;
-			case R.id.redsouth:
-				level.getBomb().cutWire(1, 2);
-				break;
-			case R.id.greenwest:
-				level.getBomb().cutWire(2, 0);
-				break;
-			case R.id.yellowwest:
-				level.getBomb().cutWire(2,1);
-				break;
-			case R.id.redwest:
-				level.getBomb().cutWire(2, 2);
-				break;
-			case R.id.greeneast:
-				level.getBomb().cutWire(3, 0);
-				break;
-			case R.id.yelloweast:
-				level.getBomb().cutWire(3, 1);
-				break;
-			case R.id.redeast:
-				level.getBomb().cutWire(3, 2);
-				break;
-		}
+		
+		 Wire[] wires = level.getBomb().getWires();
+	        for(int i = 0; i!=wires.length; i++){
+	        	String color = this.getResources().getStringArray(R.array.wirecolors)[wires[i].getColor()];
+	        	String location = this.getResources().getStringArray(R.array.wirelocations)[wires[i].getLocation()];
+	        	R.id rid = new R.id();
+	        	try {
+					int id =rid.getClass().getField(color+location).getInt(rid);
+					if(clicked.getId() == id){
+						level.getBomb().cutWire(wires[i].getLocation(), wires[i].getColor());
+					}
+				} catch (IllegalArgumentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SecurityException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (NoSuchFieldException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	        	
+	        }
+	        clicked.setBackgroundColor(R.color.black);
 		
 	}
 

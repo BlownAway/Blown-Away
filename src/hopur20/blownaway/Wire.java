@@ -11,7 +11,6 @@ public class Wire {
 	 */
 	private int location;
 	private int color;
-	private int id;
 	private boolean isCut;
 	
 	/*
