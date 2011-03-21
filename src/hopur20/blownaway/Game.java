@@ -11,6 +11,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class Game extends Activity implements OnClickListener, BombStateListener {
@@ -113,6 +114,46 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 	 */
 	public void onClick(View clicked) {
 		
+		//clicked.setBackgroundColor(R.color.orange);
+		clicked.setVisibility(View.INVISIBLE);
+		switch(clicked.getId()){
+			case R.id.greennorth:
+				level.getBomb().cutWire(0,0);
+				break;
+			case R.id.yellownorth:
+				level.getBomb().cutWire(0, 1);
+				break;
+			case R.id.rednorth:
+				level.getBomb().cutWire(0, 2);
+				break;
+			case R.id.greensouth:
+				level.getBomb().cutWire(1,0);
+				break;
+			case R.id.yellowsouth:
+				level.getBomb().cutWire(1, 1);
+				break;
+			case R.id.redsouth:
+				level.getBomb().cutWire(1, 2);
+				break;
+			case R.id.greenwest:
+				level.getBomb().cutWire(2, 0);
+				break;
+			case R.id.yellowwest:
+				level.getBomb().cutWire(2,1);
+				break;
+			case R.id.redwest:
+				level.getBomb().cutWire(2, 2);
+				break;
+			case R.id.greeneast:
+				level.getBomb().cutWire(3, 0);
+				break;
+			case R.id.yelloweast:
+				level.getBomb().cutWire(3, 1);
+				break;
+			case R.id.redeast:
+				level.getBomb().cutWire(3, 2);
+				break;
+		}
 		
 		 Wire[] wires = level.getBomb().getWires();
 	        for(int i = 0; i!=wires.length; i++){
@@ -174,6 +215,6 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 	 */
 	public void onTick(long timeRemaining) {
 		 TextView timerDisplay = (TextView) findViewById(R.id.timer);
-		 timerDisplay.setText("seconds remaining: " + timeRemaining);
+		 timerDisplay.setText("Time: " + timeRemaining);
 	}
 }
