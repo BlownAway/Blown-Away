@@ -54,31 +54,33 @@ public class Game extends Activity implements OnClickListener, BombStateListener
         })
         .show();
         
-        //Virkjum takkana fyrir vírana.
-        Button greennorth = (Button) findViewById(R.id.greennorth);
-        greennorth.setOnClickListener(this);
-        Button yellownorth = (Button) findViewById(R.id.yellownorth);
-        yellownorth.setOnClickListener(this);
-        Button rednorth = (Button) findViewById(R.id.rednorth);
-        rednorth.setOnClickListener(this);
-        Button greenwest = (Button) findViewById(R.id.greenwest);
-        greenwest.setOnClickListener(this);
-        Button yellowwest = (Button) findViewById(R.id.yellowwest);
-        yellowwest.setOnClickListener(this);
-        Button redwest = (Button) findViewById(R.id.redwest);
-        redwest.setOnClickListener(this);
-        Button greensouth = (Button) findViewById(R.id.greensouth);
-        greensouth.setOnClickListener(this);
-        Button yellowsouth = (Button) findViewById(R.id.yellowsouth);
-        yellowsouth.setOnClickListener(this);
-        Button redsouth = (Button) findViewById(R.id.redsouth);
-        redsouth.setOnClickListener(this);
-        Button greeneast = (Button) findViewById(R.id.greeneast);
-        greeneast.setOnClickListener(this);
-        Button yelloweast = (Button) findViewById(R.id.yelloweast);
-        yelloweast.setOnClickListener(this);
-        Button redeast = (Button) findViewById(R.id.redeast);
-        redeast.setOnClickListener(this);
+        //Virkjum vírana
+        Wire[] wires = level.getBomb().getWires();
+        for(int i = 0; i!=wires.length; i++){
+        	String color = this.getResources().getStringArray(R.array.wirecolors)[wires[i].getColor()];
+        	String location = this.getResources().getStringArray(R.array.wirelocations)[wires[i].getLocation()];
+        	String id = color+location;
+        	R.id rid = new R.id();
+        	Button b;
+			try {
+				b = (Button) findViewById(rid.getClass().getField(id).getInt(rid));
+				R.color rcolor = new R.color();
+	        	b.setBackgroundColor(this.getResources().getColor(rcolor.getClass().getField(color).getInt(rcolor)));
+	        	b.setOnClickListener(this);
+			} catch (IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SecurityException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NoSuchFieldException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        }
         
         //Virkjum takkann til að sýna leiðbeiningar
         Button help = (Button) findViewById(R.id.help);

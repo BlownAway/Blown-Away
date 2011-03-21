@@ -1,35 +1,35 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-  <TextView
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+android:id="@+id/widget28"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:orientation="vertical"
+xmlns:android="http://schemas.android.com/apk/res/android"
+>
+<TextView
 android:id="@+id/titletv"
-android:layout_width="wrap_content"
+android:layout_width="fill_parent"
 android:layout_height="wrap_content"
-></TextView>
- <TextView
+android:text="TextView"
+android:textSize="18sp"
+android:textStyle="bold"
+android:gravity="center"
+>
+</TextView>
+<TextView
 android:id="@+id/summarytv"
-android:layout_width="wrap_content"
+android:layout_width="fill_parent"
 android:layout_height="wrap_content"
-></TextView>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-<Button
-android:id="@+id/quitbutton"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:text="quit">
-</Button>
+android:layout_marginTop="10px"
+android:text="TextView"
+>
+</TextView>
 <Button
 android:id="@+id/okbutton"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
-android:text="ok"
-></Button>
-</LinearLayout>
+android:text="Button"
+android:layout_gravity="center_horizontal"
+>
+</Button>
 </LinearLayout>

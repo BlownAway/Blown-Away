@@ -15,11 +15,13 @@ public class GameManager extends Activity implements OnClickListener {
 	 * Kallað þegar nýr leikur er ræstur.
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
+	private boolean isGameOver;
 	private int currentLevel=1;
 	private int score = 0;
 	Button okbutton,quitbutton;
 	TextView title,summary;
 	public void onCreate(Bundle savedInstanceState) {
+		isGameOver = false;
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.betweenlevelmenu);
 		title = (TextView) findViewById(R.id.titletv);
@@ -28,8 +30,6 @@ public class GameManager extends Activity implements OnClickListener {
 		summary.setText("Diffuse the bomb before the time runs out by following the diffusion instructions. Notice that viewing the instructions more than once will cost you extra time!");
 		okbutton = (Button) findViewById(R.id.okbutton);
 		okbutton.setText("Start Game");
-		quitbutton = (Button) findViewById(R.id.quitbutton);
-		quitbutton.setOnClickListener(this);
 		okbutton.setOnClickListener(this);
 		
 	
@@ -39,23 +39,27 @@ public class GameManager extends Activity implements OnClickListener {
 		if(resultcode == RESULT_OK){
 			title.setText("Level "+currentLevel+ " completed!");
 			score += currentLevel*100+data.getIntExtra("score", 0);
-			summary.setText("Your score so far: "+score);
+			summary.setText("Level Bonus: "+100*currentLevel + "\n"
+						   +"Time Bonus: "+data.getIntExtra("score", 0)+"\n"
+						   +"Your score so far: "+score);
 			currentLevel++;
 			okbutton.setText("Next level");
 		}
 		else{
 			title.setText("Game Over");
-			okbutton.setVisibility(View.INVISIBLE);
+			summary.setText("Your final score was: "+score);
+			okbutton.setText("Main Menu");
+			isGameOver = true;
 		}
 		
 	}
 	public void onClick(View v) {
-		if(v==okbutton){
+		if(!isGameOver){
 			Intent newLevel = new Intent(this,hopur20.blownaway.Game.class);
 			newLevel.putExtra("hopur20.blownaway.Game.LEVEL_NUMBER",currentLevel);
 			this.startActivityForResult(newLevel, currentLevel);
 		}
-		if(v==quitbutton){
+		if(isGameOver){
 			finish();
 		}
 		

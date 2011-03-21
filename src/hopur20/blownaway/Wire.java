@@ -6,10 +6,12 @@ public class Wire {
 	 * 
 	 * location er númer hliðar sem vír er staðsettur á
 	 * color er númer litar vírs
+	 * id er id tilsvarandi takka
 	 * isCut er satt ef búið er að klippa á vírinn, annars ekki.
 	 */
 	private int location;
 	private int color;
+	private int id;
 	private boolean isCut;
 	
 	/*
@@ -22,6 +24,7 @@ public class Wire {
 		this.location = location;
 		this.color = color;
 		this.isCut = false;
+		
 	}
 	
 	/*
