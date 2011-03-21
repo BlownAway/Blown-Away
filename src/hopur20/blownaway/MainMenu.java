@@ -27,7 +27,7 @@ public class MainMenu extends Activity{
 	        newgamebutton.setOnClickListener(new OnClickListener(){
 
 				public void onClick(View v) {
-					Intent game = new Intent (v.getContext(), hopur20.blownaway.Game.class);
+					Intent game = new Intent (v.getContext(), hopur20.blownaway.GameManager.class);
 					try {
 						v.getContext().startActivity(game);
 					}

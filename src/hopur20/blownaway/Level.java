@@ -1,4 +1,3 @@
-
 package hopur20.blownaway;
 
 
@@ -33,7 +32,7 @@ public class Level {
 		if(levelNumber < 5){
 			numColors = 3;
 			numLocations = 2;
-			this.time = 30-difficulty*5;
+			this.time = 40-difficulty*10;
 		}
 		else{
 			if(levelNumber <10){
@@ -105,6 +104,14 @@ public class Level {
 	 */
 	public int[] getLocationSummary(){
 		return locSummary;
+	}
+	
+	public int getNumberToCut(){
+		int num = 0;
+		for(int i = 0; i!=locSummary.length;i++){
+			num += locSummary[i];
+		}
+		return num;
 	}
 	
 

@@ -15,8 +15,15 @@
 				<category android:name="android.intent.category.DEFAULT" />
 			</intent-filter>
 		</activity>
+		<activity class=".GameManager" android:name="GameManager">
+			<intent-filter>
+				<action android:name="hopur20.blownaway.GameManager.View" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+		</activity>
 
-    </application>
+    
+</application>
 
 
 </manifest> 

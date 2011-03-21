@@ -23,17 +23,18 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_layout);
-        
+        int levelNumber = this.getIntent().getIntExtra("hopur20.blownaway.Game.LEVEL_NUMBER", 1);
         // Búum til nýtt level.
-        level = new Level(9);
+        level = new Level(levelNumber);
         level.getBomb().addStateListener(this);
                 
         // Framköllum leiðbeiningar fyrir aftengingu sprengju.
-        String instructions = "To defuse the bomb, you must cut: \n";
+        String instructions = "To defuse the bomb, you must cut "+level.getNumberToCut()+"wires: \n";
         for(int i =0; i!=level.getColorSummary().length;i++){
         	instructions+="  " + level.getColorSummary()[i] +
         	              " "  + this.getResources().getStringArray(R.array.wirecolors)[i] + " wires\n";
         }
+        instructions+="Their locations are:\n";
         for(int j = 0; j!=level.getLocationSummary().length;j++){
         	instructions+="  " + level.getLocationSummary()[j] +
         	              " on the "  + this.getResources().getStringArray(R.array.wirelocations)[j] 
@@ -153,12 +154,14 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 	 * @see hopur20.blownaway.BombStateListener#onBombDefused(long)
 	 */
 	public void onBombDefused(long timeRemaining) {
-		new AlertDialog.Builder(this).setPositiveButton("Ok", new android.content.DialogInterface.OnClickListener(){
-        	public void onClick(DialogInterface arg0, int arg1) {
-        		arg0.dismiss();
-        		finish();
-        	}
-        }).setMessage("Congratulations, you defused the bomb!").show();
+		this.setResult(RESULT_OK);
+		finish();
+//		new AlertDialog.Builder(this).setPositiveButton("Ok", new android.content.DialogInterface.OnClickListener(){
+//        	public void onClick(DialogInterface arg0, int arg1) {
+//        		arg0.dismiss();
+//        		finish();
+//        	}
+//        }).setMessage("Congratulations, you defused the bomb!").show();
 	}
 
 	/*
