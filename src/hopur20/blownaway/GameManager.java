@@ -3,6 +3,7 @@ package hopur20.blownaway;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,40 +17,61 @@ public class GameManager extends Activity implements OnClickListener {
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
 	private boolean isGameOver;
-	private int currentLevel=1;
-	private int score = 0;
+	private int currentLevel;
+	private int score;
 	Button okbutton,quitbutton;
 	TextView title,summary;
 	public void onCreate(Bundle savedInstanceState) {
 		isGameOver = false;
 		super.onCreate(savedInstanceState);
+		currentLevel = this.getIntent().getIntExtra("startLevel", 1);
+		score = this.getIntent().getIntExtra("startScore",0);
 		setContentView(R.layout.betweenlevelmenu);
 		title = (TextView) findViewById(R.id.titletv);
-		title.setText("Blown Away");
 		summary = (TextView) findViewById(R.id.summarytv);
-		summary.setText("Diffuse the bomb before the time runs out by following the diffusion instructions. Notice that viewing the instructions more than once will cost you extra time!");
 		okbutton = (Button) findViewById(R.id.okbutton);
-		okbutton.setText("Start Game");
-		okbutton.setOnClickListener(this);
+		if(currentLevel==1){
+			title.setText("Blown Away");
+			summary.setText("Diffuse the bomb before the time runs out by following the diffusion instructions. Notice that viewing the instructions more than once will cost you extra time!");
+			okbutton.setText("Start Game");
+			okbutton.setOnClickListener(this);
+		}
+		else{
+			title.setText("Level "+currentLevel);
+			okbutton.setText("Start");
+			summary.setText("Your score so far: "+score);
+		}
 		
 	
 	}
 	@Override
 	protected void onActivityResult(int levelnumber, int resultcode, Intent data) {
+		SharedPreferences settings = this.getSharedPreferences(MainMenu.SAVED_PREF, MODE_PRIVATE);
 		if(resultcode == RESULT_OK){
-			title.setText("Level "+currentLevel+ " completed!");
-			score += currentLevel*100+data.getIntExtra("score", 0);
-			summary.setText("Level Bonus: "+100*currentLevel + "\n"
-						   +"Time Bonus: "+data.getIntExtra("score", 0)+"\n"
-						   +"Your score so far: "+score);
-			currentLevel++;
-			okbutton.setText("Next level");
+			isGameOver = data.getBooleanExtra("isGameOver", true);
+			if(isGameOver){
+				title.setText("Game Over");
+				summary.setText("Your final score was: "+score);
+				okbutton.setText("Main Menu");
+				settings.edit().putInt("currentLevel", 1).commit();
+				settings.edit().putInt("score",0).commit();
+			}
+			else{
+				title.setText("Level "+currentLevel+ " completed!");
+				score += currentLevel*100+data.getIntExtra("score", 0);
+				summary.setText("Level Bonus: "+100*currentLevel + "\n"
+							   +"Time Bonus: "+data.getIntExtra("score", 0)+"\n"
+							   +"Your score so far: "+score);
+				currentLevel++;
+				okbutton.setText("Next level");
+			}
 		}
 		else{
-			title.setText("Game Over");
-			summary.setText("Your final score was: "+score);
-			okbutton.setText("Main Menu");
-			isGameOver = true;
+			settings.edit().putInt("currentLevel", currentLevel).commit();
+			settings.edit().putInt("score",score).commit();
+			finish();
+			
+			
 		}
 		
 	}

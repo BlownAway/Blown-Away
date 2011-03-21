@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -15,7 +16,7 @@ import android.widget.TextView;
 public class Game extends Activity implements OnClickListener, BombStateListener {
 
 	private Level level; //Borðið sem verið er að spila.
-	private int levelScore;
+	private int levelScore,levelNumber;
     
   
 	/*
@@ -26,13 +27,13 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 		levelScore = 0;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_layout);
-        int levelNumber = this.getIntent().getIntExtra("hopur20.blownaway.Game.LEVEL_NUMBER", 1);
+        levelNumber = this.getIntent().getIntExtra("hopur20.blownaway.Game.LEVEL_NUMBER", 1);
         // Búum til nýtt level.
         level = new Level(levelNumber);
         level.getBomb().addStateListener(this);
                 
         // Framköllum leiðbeiningar fyrir aftengingu sprengju.
-        String instructions = "To defuse the bomb, you must cut "+level.getNumberToCut()+"wires: \n";
+        String instructions = "To defuse the bomb, you must cut "+level.getNumberToCut()+" wires: \n";
         for(int i =0; i!=level.getColorSummary().length;i++){
         	instructions+="  " + level.getColorSummary()[i] +
         	              " "  + this.getResources().getStringArray(R.array.wirecolors)[i] + " wires\n";
@@ -150,28 +151,21 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 		levelScore = (int) timeRemaining*10;
 		Intent data = new Intent();
 		data.putExtra("score", levelScore);
+		data.putExtra("isGameOver", false);
 		this.setResult(RESULT_OK,data);
 		finish();
-//		new AlertDialog.Builder(this).setPositiveButton("Ok", new android.content.DialogInterface.OnClickListener(){
-//        	public void onClick(DialogInterface arg0, int arg1) {
-//        		arg0.dismiss();
-//        		finish();
-//        	}
-//        }).setMessage("Congratulations, you defused the bomb!").show();
 	}
 
 	/*
-	 * Birtum tilkynningu þegar sprenfjan springur.
+	 * Birtum tilkynningu þegar sprengjan springur.
 	 * @see hopur20.blownaway.BombStateListener#onBombExploded()
 	 */
 	public void onBombExploded(){
-		new AlertDialog.Builder(this).setPositiveButton("Ok", new android.content.DialogInterface.OnClickListener(){
-        	public void onClick(DialogInterface arg0, int arg1) {
-        		arg0.dismiss();
-        		finish();
-        	}
-        }).setMessage("The bomb exploded!").show();
-		
+		Intent data = new Intent();
+		data.putExtra("score", 0);
+		data.putExtra("isGameOver", true);
+		this.setResult(RESULT_OK,data);
+		finish();
 	}
 
 	/*

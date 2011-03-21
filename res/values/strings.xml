@@ -2,4 +2,5 @@
 <resources>
     <string name="hello">Hello World, BlownAwayTest!</string>
     <string name="app_name">BlownAway</string>
+<string name="savedLevel">0</string>
 </resources>
