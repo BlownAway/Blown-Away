@@ -34,13 +34,14 @@ public class GameManager extends Activity implements OnClickListener {
 			title.setText("Blown Away");
 			summary.setText("Diffuse the bomb before the time runs out by following the diffusion instructions. Notice that viewing the instructions more than once will cost you extra time!");
 			okbutton.setText("Start Game");
-			okbutton.setOnClickListener(this);
+			
 		}
 		else{
 			title.setText("Level "+currentLevel);
 			okbutton.setText("Start");
 			summary.setText("Your score so far: "+score);
 		}
+		okbutton.setOnClickListener(this);
 		
 	
 	}

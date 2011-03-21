@@ -27,25 +27,39 @@ public final class R {
         public static final int yellow=0x7f050005;
     }
     public static final class drawable {
-        public static final int icon=0x7f020000;
+        public static final int bomb=0x7f020000;
+        public static final int green_down=0x7f020001;
+        public static final int green_left=0x7f020002;
+        public static final int green_right=0x7f020003;
+        public static final int green_up=0x7f020004;
+        public static final int icon=0x7f020005;
+        public static final int red_down=0x7f020006;
+        public static final int red_left=0x7f020007;
+        public static final int red_right=0x7f020008;
+        public static final int red_up=0x7f020009;
+        public static final int yellow_down=0x7f02000a;
+        public static final int yellow_left=0x7f02000b;
+        public static final int yellow_right=0x7f02000c;
+        public static final int yellow_up=0x7f02000d;
     }
     public static final class id {
-        public static final int exit=0x7f07001b;
-        public static final int greeneast=0x7f070013;
-        public static final int greennorth=0x7f07000a;
-        public static final int greensouth=0x7f070011;
-        public static final int greenwest=0x7f07000f;
+        public static final int bomb=0x7f07000a;
+        public static final int exit=0x7f07001c;
+        public static final int greeneast=0x7f070014;
+        public static final int greennorth=0x7f07000b;
+        public static final int greensouth=0x7f070012;
+        public static final int greenwest=0x7f070010;
         public static final int help=0x7f070006;
-        public static final int hiscore=0x7f07001a;
-        public static final int instructions=0x7f070019;
-        public static final int instructionstv=0x7f070016;
-        public static final int newgame=0x7f070017;
+        public static final int hiscore=0x7f07001b;
+        public static final int instructions=0x7f07001a;
+        public static final int instructionstv=0x7f070017;
+        public static final int newgame=0x7f070018;
         public static final int okbutton=0x7f070003;
-        public static final int redeast=0x7f070015;
-        public static final int rednorth=0x7f07000c;
-        public static final int redsouth=0x7f070010;
-        public static final int redwest=0x7f07000d;
-        public static final int resumegame=0x7f070018;
+        public static final int redeast=0x7f070016;
+        public static final int rednorth=0x7f07000d;
+        public static final int redsouth=0x7f070011;
+        public static final int redwest=0x7f07000e;
+        public static final int resumegame=0x7f070019;
         public static final int summarytv=0x7f070002;
         public static final int timer=0x7f070008;
         public static final int titletv=0x7f070001;
@@ -54,10 +68,10 @@ public final class R {
         public static final int widget28=0x7f070000;
         public static final int widget40=0x7f070009;
         public static final int widget61=0x7f070004;
-        public static final int yelloweast=0x7f070014;
-        public static final int yellownorth=0x7f07000b;
-        public static final int yellowsouth=0x7f070012;
-        public static final int yellowwest=0x7f07000e;
+        public static final int yelloweast=0x7f070015;
+        public static final int yellownorth=0x7f07000c;
+        public static final int yellowsouth=0x7f070013;
+        public static final int yellowwest=0x7f07000f;
     }
     public static final class layout {
         public static final int betweenlevelmenu=0x7f030000;
