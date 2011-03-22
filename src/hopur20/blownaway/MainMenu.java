@@ -26,16 +26,18 @@ public class MainMenu extends Activity implements OnClickListener{
 
 		setContentView(R.layout.main);
 		
-		settings = this.getSharedPreferences(SAVED_PREF, MODE_PRIVATE);
+		settings = this.getSharedPreferences(SAVED_PREF, 0);
 		
 		boolean hasSavedGame = settings.getInt("currentLevel", 1)>1;
 
 		//Virkjum hnappinn fyrir nýjan leik til að ræsa Game Activity.
 		newgamebutton = (Button) findViewById(R.id.newgame);
+		
 		newgamebutton.setOnClickListener(this);
 
 		resumegamebutton = (Button) findViewById(R.id.resumegame);
 		resumegamebutton.setOnClickListener(this);
+		//resumegamebutton.setEnabled(hasSavedGame);
 		Button highscorebutton = (Button) findViewById(R.id.hiscore);
 
 		// Virkjum exit takkann.
@@ -68,6 +70,12 @@ public class MainMenu extends Activity implements OnClickListener{
 
 
 
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		//resumegamebutton.setEnabled(settings.getInt("currentLevel", 1)>1);
 	}
 
 	public void onClick(View v) {
