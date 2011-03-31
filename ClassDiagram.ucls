@@ -18,7 +18,7 @@
   </interface>  
   <class corner="BOTTOM_RIGHT" language="java" name="hopur20.blownaway.Game" project="Blown Away" 
     file="/Blown Away/src/hopur20/blownaway/Game.java" binary="false">    
-    <position x="508" y="333" width="-1" height="-1"/>    
+    <position x="459" y="333" width="-1" height="-1"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -34,7 +34,7 @@
   </class>  
   <class corner="BOTTOM_RIGHT" language="java" name="hopur20.blownaway.MainMenu" project="Blown Away" 
     file="/Blown Away/src/hopur20/blownaway/MainMenu.java" binary="false">    
-    <position x="685" y="328" width="-1" height="-1"/>    
+    <position x="641" y="563" width="-1" height="-1"/>    
     <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -48,6 +48,46 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="hopur20.blownaway.GameManager" project="Blown Away" 
+    file="/Blown Away/src/hopur20/blownaway/GameManager.java" binary="false">    
+    <position x="643" y="302" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <dependency>    
+    <source project="Blown Away" name="hopur20.blownaway.GameManager" 
+      file="/Blown Away/src/hopur20/blownaway/GameManager.java" binary="false"/>    
+    <target project="Blown Away" name="hopur20.blownaway.Game" file="/Blown Away/src/hopur20/blownaway/Game.java" 
+      binary="false"/>  
+  </dependency>  
+  <association>    
+    <source project="Blown Away" name="hopur20.blownaway.Game" file="/Blown Away/src/hopur20/blownaway/Game.java" 
+      binary="false" navigable="false">      
+      <attribute name="level"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target project="Blown Away" name="hopur20.blownaway.Level" file="/Blown Away/src/hopur20/blownaway/Level.java" 
+      binary="false" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association>    
+    <source project="Blown Away" name="hopur20.blownaway.Bomb" file="/Blown Away/src/hopur20/blownaway/Bomb.java" 
+      binary="false" navigable="false">      
+      <attribute name="wires"/>      
+      <multiplicity minimum="0" maximum="2147483647"/>    
+    </source>    
+    <target project="Blown Away" name="hopur20.blownaway.Wire" file="/Blown Away/src/hopur20/blownaway/Wire.java" 
+      binary="false" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency>    
+    <source project="Blown Away" name="hopur20.blownaway.MainMenu" 
+      file="/Blown Away/src/hopur20/blownaway/MainMenu.java" binary="false"/>    
+    <target project="Blown Away" name="hopur20.blownaway.GameManager" 
+      file="/Blown Away/src/hopur20/blownaway/GameManager.java" binary="false"/>  
+  </dependency>  
   <association>    
     <source project="Blown Away" name="hopur20.blownaway.Bomb" file="/Blown Away/src/hopur20/blownaway/Bomb.java" 
       binary="false" navigable="false">      
@@ -65,32 +105,6 @@
       <multiplicity minimum="0" maximum="1"/>    
     </source>    
     <target project="Blown Away" name="hopur20.blownaway.Bomb" file="/Blown Away/src/hopur20/blownaway/Bomb.java" 
-      binary="false" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association>    
-    <source project="Blown Away" name="hopur20.blownaway.Game" file="/Blown Away/src/hopur20/blownaway/Game.java" 
-      binary="false" navigable="false">      
-      <attribute name="level"/>      
-      <multiplicity minimum="0" maximum="1"/>    
-    </source>    
-    <target project="Blown Away" name="hopur20.blownaway.Level" file="/Blown Away/src/hopur20/blownaway/Level.java" 
-      binary="false" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency>    
-    <source project="Blown Away" name="hopur20.blownaway.MainMenu" 
-      file="/Blown Away/src/hopur20/blownaway/MainMenu.java" binary="false"/>    
-    <target project="Blown Away" name="hopur20.blownaway.Game" file="/Blown Away/src/hopur20/blownaway/Game.java" 
-      binary="false"/>  
-  </dependency>  
-  <association>    
-    <source project="Blown Away" name="hopur20.blownaway.Bomb" file="/Blown Away/src/hopur20/blownaway/Bomb.java" 
-      binary="false" navigable="false">      
-      <attribute name="wires"/>      
-      <multiplicity minimum="0" maximum="2147483647"/>    
-    </source>    
-    <target project="Blown Away" name="hopur20.blownaway.Wire" file="/Blown Away/src/hopur20/blownaway/Wire.java" 
       binary="false" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  

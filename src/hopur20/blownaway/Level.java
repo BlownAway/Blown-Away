@@ -19,7 +19,7 @@ public class Level {
 	 */
 	
 	private Bomb bomb;
-	private int time,numColors,numLocations,levelScore;
+	private int time,numColors,numLocations;
 	private int[] locSummary;
 	private int[] colorSummary;
 	

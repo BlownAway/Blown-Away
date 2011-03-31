@@ -32,4 +32,13 @@ android:text="Button"
 android:layout_gravity="center_horizontal"
 >
 </Button>
+<Button
+android:id="@+id/highscorebutton"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Save Score"
+android:visibility="invisible"
+android:layout_gravity="center_horizontal"
+>
+</Button>
 </LinearLayout>

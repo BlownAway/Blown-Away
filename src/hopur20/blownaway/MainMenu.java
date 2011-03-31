@@ -19,26 +19,25 @@ public class MainMenu extends Activity implements OnClickListener{
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
 	public static final String SAVED_PREF = "SavedLevel";
-	private Button newgamebutton,resumegamebutton;	
+	private Button newgamebutton,resumegamebutton, highscorebutton;	
 	private SharedPreferences settings;
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.main);
 		
-		settings = this.getSharedPreferences(SAVED_PREF, 0);
+		settings = this.getSharedPreferences(SAVED_PREF, MODE_PRIVATE);
 		
-		boolean hasSavedGame = settings.getInt("currentLevel", 1)>1;
 
 		//Virkjum hnappinn fyrir nýjan leik til að ræsa Game Activity.
 		newgamebutton = (Button) findViewById(R.id.newgame);
-		
 		newgamebutton.setOnClickListener(this);
 
 		resumegamebutton = (Button) findViewById(R.id.resumegame);
 		resumegamebutton.setOnClickListener(this);
-		//resumegamebutton.setEnabled(hasSavedGame);
-		Button highscorebutton = (Button) findViewById(R.id.hiscore);
+		
+		highscorebutton = (Button) findViewById(R.id.hiscore);
+		highscorebutton.setOnClickListener(this);
 
 		// Virkjum exit takkann.
 		Button exitbutton = (Button) findViewById(R.id.exit);
@@ -72,12 +71,6 @@ public class MainMenu extends Activity implements OnClickListener{
 
 	}
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-		//resumegamebutton.setEnabled(settings.getInt("currentLevel", 1)>1);
-	}
-
 	public void onClick(View v) {
 		if(v==newgamebutton){
 			Intent game = new Intent (v.getContext(), hopur20.blownaway.GameManager.class);
@@ -89,8 +82,8 @@ public class MainMenu extends Activity implements OnClickListener{
 			}
 		}
 		if(v==resumegamebutton){
-			int startLevel = settings.getInt("currentLevel", 1);
-			int score = settings.getInt("score", 0);
+			int startLevel = settings.getInt("CURRENT_LEVEL", 1);
+			int score = settings.getInt("CURRENT_SCORE", 0);
 			Intent game = new Intent (v.getContext(), hopur20.blownaway.GameManager.class);
 			game.putExtra("startLevel", startLevel);
 			game.putExtra("startScore", score);
@@ -101,6 +94,24 @@ public class MainMenu extends Activity implements OnClickListener{
 				e.toString();
 			}
 		}
+		if (v==highscorebutton)			
+		{
+			Intent hiscoredisplay = new Intent (v.getContext(), hopur20.blownaway.HiScoreDisplay.class);
+			try {v.getContext().startActivity(hiscoredisplay);}
+			catch(ActivityNotFoundException e){e.toString();}	
+			hopur20.blownaway.HiScoreDisplay.addingscore=false;
+		} 	
+	        
 
+	}
+	protected void onResume() {
+		boolean hasSavedGame = settings.getInt("CURRENT_LEVEL", 1)>1;
+		if(hasSavedGame){
+			resumegamebutton.setEnabled(true);
+		}
+		else{
+			resumegamebutton.setEnabled(false);
+		}
+		super.onResume();
 	}
 }

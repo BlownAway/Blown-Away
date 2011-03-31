@@ -1,5 +1,7 @@
 package hopur20.blownaway;
 
+import java.util.Random;
+
 import android.content.Context;
 
 public class HiScore {
@@ -17,7 +19,7 @@ public HiScore(Context context)
 
 private int[] getScores() 
 {
-    
+    Random rand = new Random();
 	int[] hiscores= new int[10];
 	for (int i=0; i!=10;i++)
 	{

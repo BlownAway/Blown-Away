@@ -2,9 +2,11 @@ package hopur20.blownaway;
 
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -19,7 +21,7 @@ public class GameManager extends Activity implements OnClickListener {
 	private boolean isGameOver;
 	private int currentLevel;
 	private int score;
-	Button okbutton,quitbutton;
+	Button okbutton,quitbutton, highscorebutton;
 	TextView title,summary;
 	public void onCreate(Bundle savedInstanceState) {
 		isGameOver = false;
@@ -30,6 +32,9 @@ public class GameManager extends Activity implements OnClickListener {
 		title = (TextView) findViewById(R.id.titletv);
 		summary = (TextView) findViewById(R.id.summarytv);
 		okbutton = (Button) findViewById(R.id.okbutton);
+		highscorebutton = (Button) findViewById(R.id.highscorebutton);
+		highscorebutton.setOnClickListener(this);
+
 		if(currentLevel==1){
 			title.setText("Blown Away");
 			summary.setText("Diffuse the bomb before the time runs out by following the diffusion instructions. Notice that viewing the instructions more than once will cost you extra time!");
@@ -48,14 +53,14 @@ public class GameManager extends Activity implements OnClickListener {
 	@Override
 	protected void onActivityResult(int levelnumber, int resultcode, Intent data) {
 		SharedPreferences settings = this.getSharedPreferences(MainMenu.SAVED_PREF, MODE_PRIVATE);
+		settings.edit().clear().commit();
 		if(resultcode == RESULT_OK){
-			isGameOver = data.getBooleanExtra("isGameOver", true);
+			isGameOver = data.getBooleanExtra("isGameOver", false);
 			if(isGameOver){
 				title.setText("Game Over");
 				summary.setText("Your final score was: "+score);
 				okbutton.setText("Main Menu");
-				settings.edit().putInt("currentLevel", 1).commit();
-				settings.edit().putInt("score",0).commit();
+				highscorebutton.setVisibility(View.VISIBLE);
 			}
 			else{
 				title.setText("Level "+currentLevel+ " completed!");
@@ -65,25 +70,43 @@ public class GameManager extends Activity implements OnClickListener {
 							   +"Your score so far: "+score);
 				currentLevel++;
 				okbutton.setText("Next level");
+				settings.edit().putInt("CURRENT_LEVEL", currentLevel).putInt("CURRENT_SCORE",score).commit();
+				highscorebutton.setVisibility(View.INVISIBLE);
+
 			}
 		}
 		else{
-			settings.edit().putInt("currentLevel", currentLevel).commit();
-			settings.edit().putInt("score",score).commit();
+			settings.edit().putInt("CURRENT_LEVEL", currentLevel).putInt("CURRENT_SCORE",score).commit();
 			finish();
-			
-			
 		}
 		
 	}
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if(keyCode == KeyEvent.KEYCODE_BACK){
+			if(!isGameOver){
+				SharedPreferences settings = this.getSharedPreferences(MainMenu.SAVED_PREF, MODE_PRIVATE);
+				settings.edit().clear().putInt("CURRENT_LEVEL", currentLevel).putInt("CURRENT_SCORE",score).commit();
+			}
+		}
+		return super.onKeyDown(keyCode, event);
+	}
 	public void onClick(View v) {
-		if(!isGameOver){
+		if(v==okbutton && !isGameOver){
 			Intent newLevel = new Intent(this,hopur20.blownaway.Game.class);
 			newLevel.putExtra("hopur20.blownaway.Game.LEVEL_NUMBER",currentLevel);
 			this.startActivityForResult(newLevel, currentLevel);
 		}
-		if(isGameOver){
+		if(v==okbutton && isGameOver){
 			finish();
+		}
+		if(v==highscorebutton && isGameOver)
+		{
+			Intent hiscoredisplay = new Intent (v.getContext(), hopur20.blownaway.HiScoreDisplay.class);
+			try {v.getContext().startActivity(hiscoredisplay);}
+			catch(ActivityNotFoundException e){e.toString();}	
+			hopur20.blownaway.HiScoreDisplay.endscore = score;
+			hopur20.blownaway.HiScoreDisplay.addingscore=true;
+			
 		}
 		
 	}
