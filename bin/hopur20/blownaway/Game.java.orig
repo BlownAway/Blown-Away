@@ -1,0 +1,255 @@
+package hopur20.blownaway;
+
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
+
+public class Game extends Activity implements OnClickListener, BombStateListener {
+
+	private Level level; //Borðið sem verið er að spila.
+	private int levelScore,levelNumber;
+    
+  
+	/*
+	 * Kallað þegar nýr leikur er ræstur.
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
+	public void onCreate(Bundle savedInstanceState) {
+		levelScore = 0;
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.game_layout);
+        levelNumber = this.getIntent().getIntExtra("hopur20.blownaway.Game.LEVEL_NUMBER", 1);
+        // Búum til nýtt level.
+<<<<<<< HEAD
+        level = new Level(levelNumber);
+=======
+        level = new Level(5);
+>>>>>>> 97990f503eb08cd2229b80993a6dd5480d80138e
+        level.getBomb().addStateListener(this);
+                
+        // Framköllum leiðbeiningar fyrir aftengingu sprengju.
+        String instructions = "To defuse the bomb, you must cut "+level.getNumberToCut()+" wires: \n";
+        for(int i =0; i!=level.getColorSummary().length;i++){
+        	instructions+="  " + level.getColorSummary()[i] +
+        	              " "  + this.getResources().getStringArray(R.array.wirecolors)[i] + " wires\n";
+        }
+        instructions+="Their locations are:\n";
+        for(int j = 0; j!=level.getLocationSummary().length;j++){
+        	instructions+="  " + level.getLocationSummary()[j] +
+        	              " on the "  + this.getResources().getStringArray(R.array.wirelocations)[j] 
+        	                          + " side\n";
+        }
+        final AlertDialog helpDialog = new AlertDialog.Builder(this)
+        .setMessage(instructions)
+        .setPositiveButton("Ok", new android.content.DialogInterface.OnClickListener(){
+
+			public void onClick(DialogInterface arg0, int arg1) {
+				arg0.dismiss();
+			}
+        	
+        })
+        .show();
+        
+<<<<<<< HEAD
+        //Virkjum vírana
+        Wire[] wires = level.getBomb().getWires();
+        for(int i = 0; i!=wires.length; i++){
+        	String color = this.getResources().getStringArray(R.array.wirecolors)[wires[i].getColor()];
+        	String location = this.getResources().getStringArray(R.array.wirelocations)[wires[i].getLocation()];
+        	String id = color+location;
+        	R.id rid = new R.id();
+        	Button b;
+			try {
+				b = (Button) findViewById(rid.getClass().getField(id).getInt(rid));
+				R.color rcolor = new R.color();
+	        	b.setBackgroundColor(this.getResources().getColor(rcolor.getClass().getField(color).getInt(rcolor)));
+	        	b.setOnClickListener(this);
+			} catch (IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SecurityException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NoSuchFieldException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        }
+=======
+        //Virkjum takkana fyrir vírana.
+        ImageButton greennorth = (ImageButton) findViewById(R.id.greennorth);
+        greennorth.setOnClickListener(this);
+        ImageButton yellownorth = (ImageButton) findViewById(R.id.yellownorth);
+        yellownorth.setOnClickListener(this);
+        ImageButton rednorth = (ImageButton) findViewById(R.id.rednorth);
+        rednorth.setOnClickListener(this);
+        ImageButton greenwest = (ImageButton) findViewById(R.id.greenwest);
+        greenwest.setOnClickListener(this);
+        ImageButton yellowwest = (ImageButton) findViewById(R.id.yellowwest);
+        yellowwest.setOnClickListener(this);
+        ImageButton redwest = (ImageButton) findViewById(R.id.redwest);
+        redwest.setOnClickListener(this);
+        ImageButton greensouth = (ImageButton) findViewById(R.id.greensouth);
+        greensouth.setOnClickListener(this);
+        ImageButton yellowsouth = (ImageButton) findViewById(R.id.yellowsouth);
+        yellowsouth.setOnClickListener(this);
+        ImageButton redsouth = (ImageButton) findViewById(R.id.redsouth);
+        redsouth.setOnClickListener(this);
+        ImageButton greeneast = (ImageButton) findViewById(R.id.greeneast);
+        greeneast.setOnClickListener(this);
+        ImageButton yelloweast = (ImageButton) findViewById(R.id.yelloweast);
+        yelloweast.setOnClickListener(this);
+        ImageButton redeast = (ImageButton) findViewById(R.id.redeast);
+        redeast.setOnClickListener(this);
+>>>>>>> 97990f503eb08cd2229b80993a6dd5480d80138e
+        
+        //Virkjum takkann til að sýna leiðbeiningar
+        Button help = (Button) findViewById(R.id.help);
+        help.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View arg0) {
+				helpDialog.show();
+			}
+        	
+        });  
+
+    }
+
+
+	/*
+	 * Slökkvum á klukkunni þegar farið er út úr leik með því að ýta á back.
+	 * @see android.app.Activity#onKeyDown(int, android.view.KeyEvent)
+	 */
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if(keyCode == KeyEvent.KEYCODE_BACK){
+			level.getBomb().cancel();
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+
+	/*
+	 * Klippum á tilsvarandi vír þegar ýtt er á einhvern takka.
+	 * @see android.view.View.OnClickListener#onClick(android.view.View)
+	 */
+	public void onClick(View clicked) {
+		
+<<<<<<< HEAD
+		
+		 Wire[] wires = level.getBomb().getWires();
+	        for(int i = 0; i!=wires.length; i++){
+	        	String color = this.getResources().getStringArray(R.array.wirecolors)[wires[i].getColor()];
+	        	String location = this.getResources().getStringArray(R.array.wirelocations)[wires[i].getLocation()];
+	        	R.id rid = new R.id();
+	        	try {
+					int id =rid.getClass().getField(color+location).getInt(rid);
+					if(clicked.getId() == id){
+						level.getBomb().cutWire(wires[i].getLocation(), wires[i].getColor());
+					}
+				} catch (IllegalArgumentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SecurityException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (NoSuchFieldException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	        	
+	        }
+	        clicked.setBackgroundColor(R.color.black);
+=======
+		//clicked.setBackgroundColor(R.color.orange);
+		clicked.setVisibility(View.INVISIBLE);
+		switch(clicked.getId()){
+			case R.id.greennorth:
+				level.getBomb().cutWire(0,0);
+				break;
+			case R.id.yellownorth:
+				level.getBomb().cutWire(0, 1);
+				break;
+			case R.id.rednorth:
+				level.getBomb().cutWire(0, 2);
+				break;
+			case R.id.greensouth:
+				level.getBomb().cutWire(1,0);
+				break;
+			case R.id.yellowsouth:
+				level.getBomb().cutWire(1, 1);
+				break;
+			case R.id.redsouth:
+				level.getBomb().cutWire(1, 2);
+				break;
+			case R.id.greenwest:
+				level.getBomb().cutWire(2, 0);
+				break;
+			case R.id.yellowwest:
+				level.getBomb().cutWire(2,1);
+				break;
+			case R.id.redwest:
+				level.getBomb().cutWire(2, 2);
+				break;
+			case R.id.greeneast:
+				level.getBomb().cutWire(3, 0);
+				break;
+			case R.id.yelloweast:
+				level.getBomb().cutWire(3, 1);
+				break;
+			case R.id.redeast:
+				level.getBomb().cutWire(3, 2);
+				break;
+		}
+>>>>>>> 97990f503eb08cd2229b80993a6dd5480d80138e
+		
+	}
+
+	/*
+	 * Birtum tilkynningu þegar sprengjan er aftengd.
+	 * @see hopur20.blownaway.BombStateListener#onBombDefused(long)
+	 */
+	public void onBombDefused(long timeRemaining) {
+		levelScore = (int) timeRemaining*10;
+		Intent data = new Intent();
+		data.putExtra("score", levelScore);
+		data.putExtra("isGameOver", false);
+		this.setResult(RESULT_OK,data);
+		finish();
+	}
+
+	/*
+	 * Birtum tilkynningu þegar sprengjan springur.
+	 * @see hopur20.blownaway.BombStateListener#onBombExploded()
+	 */
+	public void onBombExploded(){
+		Intent data = new Intent();
+		data.putExtra("score", 0);
+		data.putExtra("isGameOver", true);
+		this.setResult(RESULT_OK,data);
+		finish();
+	}
+
+	/*
+	 * Birtum tíma sem eftir er á klukku.
+	 * @see hopur20.blownaway.BombStateListener#onTick(long)
+	 */
+	public void onTick(long timeRemaining) {
+		 TextView timerDisplay = (TextView) findViewById(R.id.timer);
+		 timerDisplay.setText("Time: " + timeRemaining);
+	}
+}
