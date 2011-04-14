@@ -52,7 +52,7 @@ public class HiScoreDisplay extends Activity {
 				
 				try {
 					String name =namefield.getText().toString();
-					hiscore.addScore(endscore,name);
+					hiscore.addScore(endscore, name);
 					addingscore = false;
 					
 					sethiscores();
