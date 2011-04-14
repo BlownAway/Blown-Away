@@ -25,8 +25,9 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
 	public void onCreate(Bundle savedInstanceState) {
-		levelScore = 0;
+		
         super.onCreate(savedInstanceState);
+        levelScore = 0;
         setContentView(R.layout.game_layout);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         levelNumber = this.getIntent().getIntExtra("hopur20.blownaway.Game.LEVEL_NUMBER", 1);
