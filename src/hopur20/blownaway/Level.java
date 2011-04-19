@@ -32,7 +32,7 @@ public class Level {
 		if(levelNumber < 4){
 			numColors = 3;
 			numLocations = 2;
-			this.time = 40-difficulty*10;
+			this.time = 60-difficulty*10;
 		}
 		else{
 			if(levelNumber <12){
@@ -43,7 +43,7 @@ public class Level {
 			else{
 				numColors = 4;
 				numLocations = 4;
-				this.time = 45-difficulty*10;
+				this.time = 45-difficulty*5;
 			}
 		}
 		colorSummary = new int[numColors];

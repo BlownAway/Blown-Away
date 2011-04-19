@@ -17,7 +17,6 @@ public class HiScoreDisplay extends Activity {
 	private HiScore hiscore;
 	public static int endscore;
 	public static boolean addingscore;
-	private Button clear;
 
 	
 	 @Override
