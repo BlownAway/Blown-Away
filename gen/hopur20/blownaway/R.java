@@ -31,41 +31,27 @@ public final class R {
         public static final int background=0x7f020001;
         public static final int background2=0x7f020002;
         public static final int background3=0x7f020003;
-        public static final int bomb=0x7f020004;
-        public static final int bomb3all=0x7f020005;
-        public static final int bomb3ns=0x7f020006;
-        public static final int bomb4all=0x7f020007;
-        public static final int bombbare=0x7f020008;
-        public static final int button=0x7f020009;
-        public static final int clear_score=0x7f02000a;
-        public static final int exit=0x7f02000b;
-        public static final int game_over=0x7f02000c;
-        public static final int green_down=0x7f02000d;
-        public static final int green_left=0x7f02000e;
-        public static final int green_right=0x7f02000f;
-        public static final int green_up=0x7f020010;
-        public static final int help=0x7f020011;
-        public static final int high_score=0x7f020012;
-        public static final int icon=0x7f020013;
-        public static final int instructions=0x7f020014;
-        public static final int logo2=0x7f020015;
-        public static final int logo_boom=0x7f020016;
-        public static final int logo_defuse=0x7f020017;
-        public static final int main_menu=0x7f020018;
-        public static final int new_game=0x7f020019;
-        public static final int next_level=0x7f02001a;
-        public static final int red_down=0x7f02001b;
-        public static final int red_left=0x7f02001c;
-        public static final int red_right=0x7f02001d;
-        public static final int red_up=0x7f02001e;
-        public static final int resume_game=0x7f02001f;
-        public static final int start=0x7f020020;
-        public static final int start_game=0x7f020021;
-        public static final int text_backtound=0x7f020022;
-        public static final int yellow_down=0x7f020023;
-        public static final int yellow_left=0x7f020024;
-        public static final int yellow_right=0x7f020025;
-        public static final int yellow_up=0x7f020026;
+        public static final int bomb3all=0x7f020004;
+        public static final int bomb3ns=0x7f020005;
+        public static final int bomb4all=0x7f020006;
+        public static final int button=0x7f020007;
+        public static final int clear_score=0x7f020008;
+        public static final int exit=0x7f020009;
+        public static final int game_over=0x7f02000a;
+        public static final int help=0x7f02000b;
+        public static final int high_score=0x7f02000c;
+        public static final int icon=0x7f02000d;
+        public static final int instructions=0x7f02000e;
+        public static final int logo2=0x7f02000f;
+        public static final int logo_boom=0x7f020010;
+        public static final int logo_defuse=0x7f020011;
+        public static final int main_menu=0x7f020012;
+        public static final int new_game=0x7f020013;
+        public static final int next_level=0x7f020014;
+        public static final int resume_game=0x7f020015;
+        public static final int start=0x7f020016;
+        public static final int start_game=0x7f020017;
+        public static final int text_backtound=0x7f020018;
     }
     public static final class id {
         public static final int TextView01=0x7f080021;
@@ -139,7 +125,9 @@ public final class R {
         public static final int main=0x7f030005;
     }
     public static final class raw {
-        public static final int hiscores=0x7f040000;
+        public static final int bleep=0x7f040000;
+        public static final int explode=0x7f040001;
+        public static final int hiscores=0x7f040002;
     }
     public static final class string {
         public static final int app_name=0x7f070001;
