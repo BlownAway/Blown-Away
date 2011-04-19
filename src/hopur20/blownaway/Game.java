@@ -32,7 +32,10 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 =======
 		levelScore = 0;
 		soundPlaying=false;
+<<<<<<< .merge_file_wLrtbO
 >>>>>>> .merge_file_VKBKNn
+=======
+>>>>>>> .merge_file_XowI4W
         super.onCreate(savedInstanceState);
         levelScore = 0;
         setContentView(R.layout.game_layout4);
