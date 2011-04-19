@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class MainMenu extends Activity implements OnClickListener{
 
@@ -19,7 +20,7 @@ public class MainMenu extends Activity implements OnClickListener{
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
 	public static final String SAVED_PREF = "SavedLevel";
-	private Button newgamebutton,resumegamebutton, highscorebutton;	
+	private ImageButton newgamebutton,resumegamebutton, highscorebutton;	
 	private SharedPreferences settings;
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -30,17 +31,17 @@ public class MainMenu extends Activity implements OnClickListener{
 		
 
 		//Virkjum hnappinn fyrir nýjan leik til að ræsa Game Activity.
-		newgamebutton = (Button) findViewById(R.id.newgame);
+		newgamebutton = (ImageButton) findViewById(R.id.newgame);
 		newgamebutton.setOnClickListener(this);
 
-		resumegamebutton = (Button) findViewById(R.id.resumegame);
+		resumegamebutton = (ImageButton) findViewById(R.id.resumegame);
 		resumegamebutton.setOnClickListener(this);
 		
-		highscorebutton = (Button) findViewById(R.id.hiscore);
+		highscorebutton = (ImageButton) findViewById(R.id.hiscore);
 		highscorebutton.setOnClickListener(this);
 
 		// Virkjum exit takkann.
-		Button exitbutton = (Button) findViewById(R.id.exit);
+		ImageButton exitbutton = (ImageButton) findViewById(R.id.exit);
 		OnClickListener exitListener = new OnClickListener(){
 			public void onClick(View V)
 			{
@@ -50,7 +51,7 @@ public class MainMenu extends Activity implements OnClickListener{
 		exitbutton.setOnClickListener(exitListener);
 
 		// Virkjum leiðbeiningatakkann.
-		Button instructionsbutton = (Button) findViewById(R.id.instructions);
+		ImageButton instructionsbutton = (ImageButton) findViewById(R.id.instructions);
 		OnClickListener instructionsListener = new OnClickListener(){
 			public void onClick(View V)
 			{

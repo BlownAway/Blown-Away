@@ -112,6 +112,7 @@ public int compareScore(int score)
 	return place;
 }
 
+
 public void addScore(int score, String name)
 {
 	int place = compareScore(score);

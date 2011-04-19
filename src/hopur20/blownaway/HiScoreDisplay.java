@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -17,7 +18,7 @@ public class HiScoreDisplay extends Activity {
 	private HiScore hiscore;
 	public static int endscore;
 	public static boolean addingscore;
-	private Button clear;
+
 
 	
 	 @Override
@@ -27,7 +28,7 @@ public class HiScoreDisplay extends Activity {
 	        setContentView(R.layout.hiscore);
 	        hiscore = new HiScore(this);
 	   	 	sethiscores();
-	   	 	Button addScore = (Button) findViewById(R.id.addscore);
+	   	 	ImageButton addScore = (ImageButton) findViewById(R.id.addscore);
 	   	 	TextView score = (TextView) findViewById(R.id.score);
 	   	 	final EditText namefield = (EditText) findViewById(R.id.name);
 	   	 	
@@ -47,7 +48,7 @@ public class HiScoreDisplay extends Activity {
 	   	
 	   	addScore.setOnClickListener(new OnClickListener(){
 			public void onClick(View v) {
-				Button addScore = (Button) findViewById(R.id.addscore);
+				ImageButton addScore = (ImageButton) findViewById(R.id.addscore);
 				addScore.setVisibility(View.INVISIBLE);
 				
 				try {
@@ -72,10 +73,13 @@ public void sethiscores()
 
 	hiscoretable.removeAllViews();
 	
+	
 	for (int i=0; i!=hiscore.scores.length; i++) {
 		TableRow hiscorerow = new TableRow(this);
 		TextView gildi = new TextView(this);
-		gildi.setText(hiscore.names[i]+" "+Integer.toString(hiscore.scores[i]));
+		gildi.setMaxHeight(30);
+		gildi.setTextColor(this.getResources().getColor(R.color.orange));
+		gildi.setText(hiscore.names[i]+" "+Integer.toString(hiscore.scores[i])+"\n");
 		hiscorerow.addView(gildi);
 		hiscoretable.addView(hiscorerow);
  	} 
