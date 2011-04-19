@@ -4,7 +4,7 @@ android:id="@+id/widget761"
 android:layout_width="fill_parent"
 android:layout_height="fill_parent"
 android:orientation="vertical"
-android:background="@drawable/bomb3ns"
+android:background="@drawable/bomb3all"
 xmlns:android="http://schemas.android.com/apk/res/android"
 >
 <TableRow
@@ -12,7 +12,7 @@ android:id="@+id/widget30"
 android:layout_width="fill_parent"
 android:layout_height="wrap_content"
 android:orientation="horizontal"
-android:layout_marginTop="15px"
+android:layout_marginTop="5px"
 >
 <TextView
 android:id="@+id/widget38"
@@ -22,6 +22,20 @@ android:text="TextView"
 android:visibility ="invisible"
 >
 </TextView>
+<FrameLayout
+android:id="@+id/widget69"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+>
+<Button 
+android:id="@+id/bluenorth" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:background="@drawable/button" 
+android:layout_gravity="center_horizontal"
+>
+</Button>
+</FrameLayout>
 <TextView android:id="@+id/widget45" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="TextView" android:visibility="invisible">
 </TextView>
 <FrameLayout
@@ -35,22 +49,24 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content" 
 android:background="@drawable/button" 
 android:layout_gravity="center_horizontal"
-android:visibility ="invisible"
 >
 </Button>
 </FrameLayout>
+<TextView android:id="@+id/widget45" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Text" android:visibility="invisible">
+</TextView>
 <Button android:text="p" 
 android:id="@+id/help" 
 android:layout_width="wrap_content" 
 android:layout_height="wrap_content"
 android:layout_gravity="right"
-android:layout_span="2"></Button>
+></Button>
+
 </TableRow>
 <TableRow
 android:id="@+id/widget31"
 android:layout_width="fill_parent"
 android:layout_height="wrap_content"
-android:layout_marginTop = "25px"
+android:layout_marginTop = "15px"
 android:orientation="horizontal"
 >
 </TableRow>
@@ -65,7 +81,7 @@ android:id="@+id/widget40"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:text="TextView"
-android:visibility ="invisible"
+
 >
 </TextView>
 <FrameLayout
@@ -79,7 +95,6 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:background = "@drawable/button"
 android:layout_gravity="center_horizontal"
-android:visibility ="invisible"
 >
 </Button>
 </FrameLayout>
@@ -88,7 +103,6 @@ android:id="@+id/widget49"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:text="TextView"
-android:visibility ="invisible"
 >
 </TextView>
 <FrameLayout
@@ -102,7 +116,6 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:background = "@drawable/button"
 android:layout_gravity="center_horizontal"
-android:visibility ="invisible"
 >
 </Button>
 </FrameLayout>
@@ -131,7 +144,6 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:background = "@drawable/button"
 android:layout_gravity="right"
-android:visibility ="invisible"
 
 >
 </Button>
@@ -156,18 +168,9 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:background = "@drawable/button"
 android:layout_gravity="left"
-android:visibility ="invisible"
 >
 </Button>
 </FrameLayout>
-</TableRow>
-<TableRow
-android:id="@+id/widget35"
-android:layout_width="fill_parent"
-android:layout_height="wrap_content"
-android:orientation="horizontal"
-android:padding = "10px"
->
 </TableRow>
 <TableRow
 android:id="@+id/widget36"
@@ -185,8 +188,7 @@ android:id="@+id/yellowwest"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:background = "@drawable/button"
-android:layout_gravity="center_horizontal"
-android:visibility ="invisible"
+android:layout_gravity="left"
 >
 </Button>
 </FrameLayout>
@@ -195,8 +197,7 @@ android:id="@+id/widget158"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:orientation="vertical"
-android:layout_span = "3"
-android:layout_marginLeft="15px"
+android:layout_span = "4"
 android:layout_gravity="center_vertical"
 >
 <TextView
@@ -210,7 +211,6 @@ android:gravity="center"
 android:layout_gravity="center_horizontal"
 >
 </TextView>
-
 </LinearLayout>
 <FrameLayout
 android:id="@+id/widget69"
@@ -223,18 +223,62 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:background = "@drawable/button"
 android:layout_gravity="right"
-android:visibility ="invisible"
 >
 </Button>
 </FrameLayout>
+</TableRow>
+<TableRow
+android:id="@+id/widget35"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal"
+android:padding = "5px"
+>
 </TableRow>
 <TableRow
 android:id="@+id/widget53"
 android:layout_width="fill_parent"
 android:layout_height="wrap_content"
 android:orientation="horizontal"
-android:padding ="5px"
 >
+<FrameLayout
+android:id="@+id/widget69"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+>
+<Button 
+android:id="@+id/bluewest" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:background="@drawable/button" 
+android:layout_gravity="left"
+>
+</Button>
+</FrameLayout>
+<TextView
+android:id="@+id/widget68"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="TextView"
+android:layout_span="4"
+android:visibility ="invisible"
+>
+</TextView>
+<FrameLayout
+android:id="@+id/widget69"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+>
+<Button 
+android:id="@+id/blueeast" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:background="@drawable/button" 
+android:layout_gravity="right"
+android:layout_span = "2"
+>
+</Button>
+</FrameLayout>
 </TableRow>
 <TableRow
 android:id="@+id/widget54"
@@ -253,7 +297,6 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:background = "@drawable/button"
 android:layout_gravity="right"
-android:visibility ="invisible"
 >
 </Button>
 </FrameLayout>
@@ -275,8 +318,7 @@ android:id="@+id/greeneast"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:background = "@drawable/button"
-android:layout_gravity="right"
-android:visibility ="invisible"
+android:layout_gravity="left"
 >
 </Button>
 </FrameLayout>
@@ -313,7 +355,6 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:background = "@drawable/button"
 android:layout_gravity="center_horizontal"
-android:visibility ="invisible"
 >
 </Button>
 </FrameLayout>
@@ -336,7 +377,6 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:background = "@drawable/button"
 android:layout_gravity="center_horizontal"
-android:visibility ="invisible"
 >
 </Button>
 </FrameLayout>
@@ -363,6 +403,20 @@ android:text="TextView"
 android:visibility ="invisible"
 >
 </TextView>
+<FrameLayout
+android:id="@+id/widget69"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+>
+<Button
+android:id="@+id/bluesouth"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:background = "@drawable/button"
+android:layout_gravity="center_horizontal"
+>
+</Button>
+</FrameLayout>
 <TextView
 android:id="@+id/widget63"
 android:layout_width="wrap_content"
@@ -382,7 +436,6 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:background = "@drawable/button"
 android:layout_gravity="center_horizontal"
-android:visibility ="invisible"
 >
 </Button>
 </FrameLayout>

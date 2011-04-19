@@ -11,7 +11,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class Game extends Activity implements OnClickListener, BombStateListener {
@@ -28,9 +27,12 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 		
         super.onCreate(savedInstanceState);
         levelScore = 0;
-        setContentView(R.layout.game_layout);
+        setContentView(R.layout.game_layout4);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         levelNumber = this.getIntent().getIntExtra("hopur20.blownaway.Game.LEVEL_NUMBER", 1);
+        if(levelNumber>3){
+        	this.findViewById(R.id.widget761).setBackgroundDrawable(this.getResources().getDrawable(R.drawable.bomb3all));
+        }
         // Búum til nýtt level.
         level = new Level(levelNumber);
         level.getBomb().addStateListener(this);
