@@ -10,6 +10,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class GameManager extends Activity implements OnClickListener {
@@ -21,8 +22,8 @@ public class GameManager extends Activity implements OnClickListener {
 	private boolean isGameOver;
 	private int currentLevel;
 	private int score;
-	Button okbutton,quitbutton, highscorebutton;
-	TextView title,summary;
+	ImageButton okbutton,quitbutton, highscorebutton;
+	TextView title,summary, logo;
 	public void onCreate(Bundle savedInstanceState) {
 		isGameOver = false;
 		super.onCreate(savedInstanceState);
@@ -31,20 +32,21 @@ public class GameManager extends Activity implements OnClickListener {
 		setContentView(R.layout.betweenlevelmenu);
 		title = (TextView) findViewById(R.id.titletv);
 		summary = (TextView) findViewById(R.id.summarytv);
-		okbutton = (Button) findViewById(R.id.okbutton);
-		highscorebutton = (Button) findViewById(R.id.highscorebutton);
+		logo = (TextView) findViewById(R.id.logo);
+		okbutton = (ImageButton) findViewById(R.id.okbutton);
+		highscorebutton = (ImageButton) findViewById(R.id.hiscorebutton);
 		highscorebutton.setOnClickListener(this);
 
 		if(currentLevel==1){
 			title.setText("Blown Away");
 			summary.setText("Diffuse the bomb before the time runs out by following the diffusion instructions. Notice that viewing the instructions more than once will cost you extra time!");
-			okbutton.setText("Start Game");
-			
+			okbutton.setBackgroundResource(R.drawable.start_game);
+			highscorebutton.setVisibility(View.INVISIBLE);
 		}
 		else{
 			title.setText("Level "+currentLevel);
-			okbutton.setText("Start");
 			summary.setText("Your score so far: "+score);
+			okbutton.setBackgroundResource(R.drawable.start);
 		}
 		okbutton.setOnClickListener(this);
 		
@@ -59,8 +61,9 @@ public class GameManager extends Activity implements OnClickListener {
 			if(isGameOver){
 				title.setText("Game Over");
 				summary.setText("Your final score was: "+score);
-				okbutton.setText("Main Menu");
 				highscorebutton.setVisibility(View.VISIBLE);
+				okbutton.setBackgroundResource(R.drawable.main_menu);
+				logo.setBackgroundResource(R.drawable.logo_boom);
 			}
 			else{
 				title.setText("Level "+currentLevel+ " completed!");
@@ -69,9 +72,9 @@ public class GameManager extends Activity implements OnClickListener {
 							   +"Time Bonus: "+data.getIntExtra("score", 0)+"\n"
 							   +"Your score so far: "+score);
 				currentLevel++;
-				okbutton.setText("Next level");
 				settings.edit().putInt("CURRENT_LEVEL", currentLevel).putInt("CURRENT_SCORE",score).commit();
 				highscorebutton.setVisibility(View.INVISIBLE);
+				okbutton.setBackgroundResource(R.drawable.next_level);
 
 			}
 		}

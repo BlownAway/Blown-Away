@@ -43,16 +43,16 @@ public class Game extends Activity implements OnClickListener, BombStateListener
         // Búum til nýtt level.
         level = new Level(levelNumber);
         level.getBomb().addStateListener(this);
-       // mp = MediaPlayer.create(this, R.raw.bleep);
-//        try {
-//			mp.prepare();
-//		} catch (IllegalStateException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		} catch (IOException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
+        mp = MediaPlayer.create(this, R.raw.bleep);
+        try {
+			mp.prepare();
+		} catch (IllegalStateException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
         
         // Framköllum leiðbeiningar fyrir aftengingu sprengju.
         String instructions = "To defuse the bomb, you must cut "+level.getNumberToCut()+" wires: \n";
@@ -201,11 +201,11 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 		 TextView timerDisplay = (TextView) findViewById(R.id.timer);
 		 timerDisplay.setText(" " + timeRemaining);
 		 
-//		 if (timeRemaining<20 && soundPlaying==false)
-//		 {
-//			 soundPlaying=true;
-//			 mp.start();
-//			
-//		 }
+ if (timeRemaining<20 && soundPlaying==false)
+{
+	 soundPlaying=true;
+	 mp.start();
+	
+	 }
 	}
 }

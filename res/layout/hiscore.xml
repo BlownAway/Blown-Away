@@ -3,14 +3,8 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@drawable/background2"
     >
-<Button
-android:id="@+id/clear"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:text="Clear High Scores"
->
-</Button>
 <TableLayout
 android:id="@+id/hiscoretable"
 android:layout_width="wrap_content"
@@ -25,23 +19,37 @@ android:layout_height="wrap_content"
 android:text = "BBB"
 android:maxLength="3"
 android:clickable="true" 
-android:cursorVisible="true" 
+android:cursorVisible="true"
+android:layout_marginTop="15dip" 
 ></EditText>
 <TextView
 android:id = "@+id/score"
 android:text = "5"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
+android:textColor="#dc8e06"
 android:inputType="number" 
 android:clickable="true" 
 android:cursorVisible="true" 
 android:digits="0123456789" 
 ></TextView>
-<Button
+<ImageButton
 android:id="@+id/addscore"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
-android:text="Add Score"
+android:layout_gravity="center_horizontal"
+android:background="@null"
+android:src="@drawable/add_score"
 >
-</Button>
+</ImageButton>
+<ImageButton
+android:id="@+id/clear"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_gravity="center_horizontal"
+android:background="@null"
+android:src="@drawable/clear_score"
+android:layout_marginTop="30dip"
+>
+</ImageButton>
 </LinearLayout>
