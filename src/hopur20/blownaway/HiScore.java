@@ -31,7 +31,8 @@ public HiScore(Context context)
 private String[] readHiScorecsv(Context context) 
 {
 	InputStream is = null;
-	try {
+	try 
+	{
 		is = context.openFileInput("hiscores.csv") ;
 	} catch (FileNotFoundException e1) {
 	is = context.getResources().openRawResource(R.raw.hiscores);

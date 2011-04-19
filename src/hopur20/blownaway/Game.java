@@ -1,11 +1,13 @@
 package hopur20.blownaway;
 
+import java.io.IOException;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -17,14 +19,20 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 
 	private Level level; //Borðið sem verið er að spila.
 	private int levelScore,levelNumber;
-    
+	private boolean soundPlaying;
+	MediaPlayer mp;
   
 	/*
 	 * Kallað þegar nýr leikur er ræstur.
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
 	public void onCreate(Bundle savedInstanceState) {
+<<<<<<< .merge_file_zP2Hjb
 		
+=======
+		levelScore = 0;
+		soundPlaying=false;
+>>>>>>> .merge_file_VKBKNn
         super.onCreate(savedInstanceState);
         levelScore = 0;
         setContentView(R.layout.game_layout4);
@@ -36,7 +44,17 @@ public class Game extends Activity implements OnClickListener, BombStateListener
         // Búum til nýtt level.
         level = new Level(levelNumber);
         level.getBomb().addStateListener(this);
-                
+        mp = MediaPlayer.create(this, R.raw.bleep);
+        try {
+			mp.prepare();
+		} catch (IllegalStateException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+        
         // Framköllum leiðbeiningar fyrir aftengingu sprengju.
         String instructions = "To defuse the bomb, you must cut "+level.getNumberToCut()+" wires: \n";
         for(int i =0; i!=level.getColorSummary().length;i++){
@@ -161,6 +179,7 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 		finish();
 	}
 
+	
 	/*
 	 * Birtum tilkynningu þegar sprengjan springur.
 	 * @see hopur20.blownaway.BombStateListener#onBombExploded()
@@ -177,8 +196,17 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 	 * Birtum tíma sem eftir er á klukku.
 	 * @see hopur20.blownaway.BombStateListener#onTick(long)
 	 */
+	
 	public void onTick(long timeRemaining) {
+		
 		 TextView timerDisplay = (TextView) findViewById(R.id.timer);
 		 timerDisplay.setText("Time: " + timeRemaining);
+		 
+		 if (timeRemaining<20 && soundPlaying==false)
+		 {
+			 soundPlaying=true;
+			 mp.start();
+			
+		 }
 	}
 }
