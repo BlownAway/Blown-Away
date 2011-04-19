@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -27,18 +28,13 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
 	public void onCreate(Bundle savedInstanceState) {
-<<<<<<< .merge_file_zP2Hjb
-		
-=======
 		levelScore = 0;
 		soundPlaying=false;
-<<<<<<< .merge_file_wLrtbO
->>>>>>> .merge_file_VKBKNn
-=======
->>>>>>> .merge_file_XowI4W
         super.onCreate(savedInstanceState);
-        levelScore = 0;
-        setContentView(R.layout.game_layout4);
+        setContentView(R.layout.game_layout);
+        TextView timerDisplay = (TextView) findViewById(R.id.timer);
+        Typeface font = Typeface.createFromAsset(getAssets(), "RADIOLAND.ttf");  
+        timerDisplay.setTypeface(font); 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         levelNumber = this.getIntent().getIntExtra("hopur20.blownaway.Game.LEVEL_NUMBER", 1);
         if(levelNumber>3){
@@ -47,16 +43,16 @@ public class Game extends Activity implements OnClickListener, BombStateListener
         // Búum til nýtt level.
         level = new Level(levelNumber);
         level.getBomb().addStateListener(this);
-        mp = MediaPlayer.create(this, R.raw.bleep);
-        try {
-			mp.prepare();
-		} catch (IllegalStateException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+       // mp = MediaPlayer.create(this, R.raw.bleep);
+//        try {
+//			mp.prepare();
+//		} catch (IllegalStateException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		} catch (IOException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
         
         // Framköllum leiðbeiningar fyrir aftengingu sprengju.
         String instructions = "To defuse the bomb, you must cut "+level.getNumberToCut()+" wires: \n";
@@ -203,13 +199,13 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 	public void onTick(long timeRemaining) {
 		
 		 TextView timerDisplay = (TextView) findViewById(R.id.timer);
-		 timerDisplay.setText("Time: " + timeRemaining);
+		 timerDisplay.setText(" " + timeRemaining);
 		 
-		 if (timeRemaining<20 && soundPlaying==false)
-		 {
-			 soundPlaying=true;
-			 mp.start();
-			
-		 }
+//		 if (timeRemaining<20 && soundPlaying==false)
+//		 {
+//			 soundPlaying=true;
+//			 mp.start();
+//			
+//		 }
 	}
 }

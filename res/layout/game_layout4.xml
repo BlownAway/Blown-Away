@@ -4,7 +4,7 @@ android:id="@+id/widget761"
 android:layout_width="fill_parent"
 android:layout_height="fill_parent"
 android:orientation="vertical"
-android:background="@drawable/bomb3all"
+android:background="@drawable/bomb4all"
 xmlns:android="http://schemas.android.com/apk/res/android"
 >
 <TableRow
@@ -33,6 +33,7 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content" 
 android:background="@drawable/button" 
 android:layout_gravity="center_horizontal"
+android:visibility = "invisible"
 >
 </Button>
 </FrameLayout>
@@ -49,16 +50,18 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content" 
 android:background="@drawable/button" 
 android:layout_gravity="center_horizontal"
+android:visibility = "invisible"
 >
 </Button>
 </FrameLayout>
 <TextView android:id="@+id/widget45" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Text" android:visibility="invisible">
 </TextView>
-<Button android:text="p" 
+<Button 
 android:id="@+id/help" 
 android:layout_width="wrap_content" 
 android:layout_height="wrap_content"
 android:layout_gravity="right"
+android:background="@drawable/help"
 ></Button>
 
 </TableRow>
@@ -81,7 +84,7 @@ android:id="@+id/widget40"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:text="TextView"
-
+android:visibility = "invisible"
 >
 </TextView>
 <FrameLayout
@@ -95,6 +98,7 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:background = "@drawable/button"
 android:layout_gravity="center_horizontal"
+android:visibility = "invisible"
 >
 </Button>
 </FrameLayout>
@@ -103,6 +107,7 @@ android:id="@+id/widget49"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:text="TextView"
+android:visibility = "invisible"
 >
 </TextView>
 <FrameLayout
@@ -116,6 +121,7 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:background = "@drawable/button"
 android:layout_gravity="center_horizontal"
+android:visibility = "invisible"
 >
 </Button>
 </FrameLayout>
@@ -144,7 +150,7 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:background = "@drawable/button"
 android:layout_gravity="right"
-
+android:visibility = "invisible"
 >
 </Button>
 </FrameLayout>
@@ -168,6 +174,7 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:background = "@drawable/button"
 android:layout_gravity="left"
+android:visibility = "invisible"
 >
 </Button>
 </FrameLayout>
@@ -189,6 +196,7 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:background = "@drawable/button"
 android:layout_gravity="left"
+android:visibility = "invisible"
 >
 </Button>
 </FrameLayout>
@@ -205,8 +213,8 @@ android:id="@+id/timer"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:text="@+id/timer"
-android:textSize="18sp"
-android:textColor="@color/red"
+android:textSize="28sp"
+android:textColor="@color/orange"
 android:gravity="center"
 android:layout_gravity="center_horizontal"
 >
@@ -223,6 +231,7 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:background = "@drawable/button"
 android:layout_gravity="right"
+android:visibility = "invisible"
 >
 </Button>
 </FrameLayout>
@@ -252,6 +261,7 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content" 
 android:background="@drawable/button" 
 android:layout_gravity="left"
+android:visibility = "invisible"
 >
 </Button>
 </FrameLayout>
@@ -276,6 +286,7 @@ android:layout_height="wrap_content"
 android:background="@drawable/button" 
 android:layout_gravity="right"
 android:layout_span = "2"
+android:visibility = "invisible"
 >
 </Button>
 </FrameLayout>
@@ -297,6 +308,7 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:background = "@drawable/button"
 android:layout_gravity="right"
+android:visibility = "invisible"
 >
 </Button>
 </FrameLayout>
@@ -319,6 +331,7 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:background = "@drawable/button"
 android:layout_gravity="left"
+android:visibility = "invisible"
 >
 </Button>
 </FrameLayout>
@@ -355,6 +368,8 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:background = "@drawable/button"
 android:layout_gravity="center_horizontal"
+android:visibility = "invisible"
+
 >
 </Button>
 </FrameLayout>
@@ -377,6 +392,7 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:background = "@drawable/button"
 android:layout_gravity="center_horizontal"
+android:visibility = "invisible"
 >
 </Button>
 </FrameLayout>
@@ -409,11 +425,12 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 >
 <Button
-android:id="@+id/bluesouth"
+android:id="@+id/yellowsouth"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:background = "@drawable/button"
 android:layout_gravity="center_horizontal"
+android:visibility = "invisible"
 >
 </Button>
 </FrameLayout>
@@ -431,11 +448,12 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 >
 <Button
-android:id="@+id/yellowsouth"
+android:id="@+id/bluesouth"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:background = "@drawable/button"
 android:layout_gravity="center_horizontal"
+android:visibility = "invisible"
 >
 </Button>
 </FrameLayout>

@@ -39,12 +39,16 @@ android:visibility ="invisible"
 >
 </Button>
 </FrameLayout>
-<Button android:text="p" 
+<TextView android:id="@+id/widget45" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Text" android:visibility="invisible" android:layout_span="1">
+</TextView>
+<Button 
 android:id="@+id/help" 
 android:layout_width="wrap_content" 
 android:layout_height="wrap_content"
 android:layout_gravity="right"
-android:layout_span="2"></Button>
+android:layout_span="1"
+android:background="@drawable/help"
+></Button>
 </TableRow>
 <TableRow
 android:id="@+id/widget31"
@@ -106,6 +110,8 @@ android:visibility ="invisible"
 >
 </Button>
 </FrameLayout>
+<TextView android:id="@+id/widget45" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Textview11" android:visibility="invisible" android:layout_span="1">
+</TextView>
 </TableRow>
 <TableRow
 android:id="@+id/widget33"
@@ -166,7 +172,7 @@ android:id="@+id/widget35"
 android:layout_width="fill_parent"
 android:layout_height="wrap_content"
 android:orientation="horizontal"
-android:padding = "10px"
+android:padding = "1px"
 >
 </TableRow>
 <TableRow
@@ -190,13 +196,11 @@ android:visibility ="invisible"
 >
 </Button>
 </FrameLayout>
-<LinearLayout
+<FrameLayout
 android:id="@+id/widget158"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
-android:orientation="vertical"
 android:layout_span = "3"
-android:layout_marginLeft="15px"
 android:layout_gravity="center_vertical"
 >
 <TextView
@@ -204,14 +208,14 @@ android:id="@+id/timer"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:text="@+id/timer"
-android:textSize="18sp"
-android:textColor="@color/red"
+android:textSize="28sp"
+android:textColor="@color/orange"
 android:gravity="center"
 android:layout_gravity="center_horizontal"
 >
 </TextView>
 
-</LinearLayout>
+</FrameLayout>
 <FrameLayout
 android:id="@+id/widget69"
 android:layout_width="wrap_content"
@@ -222,7 +226,7 @@ android:id="@+id/redeast"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:background = "@drawable/button"
-android:layout_gravity="right"
+android:layout_gravity="center_horizontal"
 android:visibility ="invisible"
 >
 </Button>
@@ -275,7 +279,7 @@ android:id="@+id/greeneast"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:background = "@drawable/button"
-android:layout_gravity="right"
+android:layout_gravity="left"
 android:visibility ="invisible"
 >
 </Button>

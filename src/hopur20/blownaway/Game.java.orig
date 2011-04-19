@@ -1,42 +1,66 @@
 package hopur20.blownaway;
 
+import java.io.IOException;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class Game extends Activity implements OnClickListener, BombStateListener {
 
 	private Level level; //Borðið sem verið er að spila.
 	private int levelScore,levelNumber;
-    
+	private boolean soundPlaying;
+	MediaPlayer mp;
   
 	/*
 	 * Kallað þegar nýr leikur er ræstur.
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
 	public void onCreate(Bundle savedInstanceState) {
-		levelScore = 0;
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.game_layout);
-        levelNumber = this.getIntent().getIntExtra("hopur20.blownaway.Game.LEVEL_NUMBER", 1);
-        // Búum til nýtt level.
-<<<<<<< HEAD
-        level = new Level(levelNumber);
+<<<<<<< .merge_file_zP2Hjb
+		
 =======
-        level = new Level(5);
->>>>>>> 97990f503eb08cd2229b80993a6dd5480d80138e
+		levelScore = 0;
+		soundPlaying=false;
+<<<<<<< .merge_file_N726pI
+<<<<<<< .merge_file_wLrtbO
+>>>>>>> .merge_file_VKBKNn
+=======
+>>>>>>> .merge_file_XowI4W
+=======
+>>>>>>> .merge_file_b3xLZG
+        super.onCreate(savedInstanceState);
+        levelScore = 0;
+        setContentView(R.layout.game_layout4);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        levelNumber = this.getIntent().getIntExtra("hopur20.blownaway.Game.LEVEL_NUMBER", 1);
+        if(levelNumber>3){
+        	this.findViewById(R.id.widget761).setBackgroundDrawable(this.getResources().getDrawable(R.drawable.bomb3all));
+        }
+        // Búum til nýtt level.
+        level = new Level(levelNumber);
         level.getBomb().addStateListener(this);
-                
+        mp = MediaPlayer.create(this, R.raw.bleep);
+        try {
+			mp.prepare();
+		} catch (IllegalStateException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+        
         // Framköllum leiðbeiningar fyrir aftengingu sprengju.
         String instructions = "To defuse the bomb, you must cut "+level.getNumberToCut()+" wires: \n";
         for(int i =0; i!=level.getColorSummary().length;i++){
@@ -60,7 +84,6 @@ public class Game extends Activity implements OnClickListener, BombStateListener
         })
         .show();
         
-<<<<<<< HEAD
         //Virkjum vírana
         Wire[] wires = level.getBomb().getWires();
         for(int i = 0; i!=wires.length; i++){
@@ -71,8 +94,8 @@ public class Game extends Activity implements OnClickListener, BombStateListener
         	Button b;
 			try {
 				b = (Button) findViewById(rid.getClass().getField(id).getInt(rid));
-				R.color rcolor = new R.color();
-	        	b.setBackgroundColor(this.getResources().getColor(rcolor.getClass().getField(color).getInt(rcolor)));
+				
+	        	b.setVisibility(View.VISIBLE);
 	        	b.setOnClickListener(this);
 			} catch (IllegalArgumentException e) {
 				// TODO Auto-generated catch block
@@ -88,33 +111,6 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 				e.printStackTrace();
 			}
         }
-=======
-        //Virkjum takkana fyrir vírana.
-        ImageButton greennorth = (ImageButton) findViewById(R.id.greennorth);
-        greennorth.setOnClickListener(this);
-        ImageButton yellownorth = (ImageButton) findViewById(R.id.yellownorth);
-        yellownorth.setOnClickListener(this);
-        ImageButton rednorth = (ImageButton) findViewById(R.id.rednorth);
-        rednorth.setOnClickListener(this);
-        ImageButton greenwest = (ImageButton) findViewById(R.id.greenwest);
-        greenwest.setOnClickListener(this);
-        ImageButton yellowwest = (ImageButton) findViewById(R.id.yellowwest);
-        yellowwest.setOnClickListener(this);
-        ImageButton redwest = (ImageButton) findViewById(R.id.redwest);
-        redwest.setOnClickListener(this);
-        ImageButton greensouth = (ImageButton) findViewById(R.id.greensouth);
-        greensouth.setOnClickListener(this);
-        ImageButton yellowsouth = (ImageButton) findViewById(R.id.yellowsouth);
-        yellowsouth.setOnClickListener(this);
-        ImageButton redsouth = (ImageButton) findViewById(R.id.redsouth);
-        redsouth.setOnClickListener(this);
-        ImageButton greeneast = (ImageButton) findViewById(R.id.greeneast);
-        greeneast.setOnClickListener(this);
-        ImageButton yelloweast = (ImageButton) findViewById(R.id.yelloweast);
-        yelloweast.setOnClickListener(this);
-        ImageButton redeast = (ImageButton) findViewById(R.id.redeast);
-        redeast.setOnClickListener(this);
->>>>>>> 97990f503eb08cd2229b80993a6dd5480d80138e
         
         //Virkjum takkann til að sýna leiðbeiningar
         Button help = (Button) findViewById(R.id.help);
@@ -146,7 +142,7 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 	 */
 	public void onClick(View clicked) {
 		
-<<<<<<< HEAD
+		clicked.setVisibility(View.INVISIBLE);
 		
 		 Wire[] wires = level.getBomb().getWires();
 	        for(int i = 0; i!=wires.length; i++){
@@ -173,49 +169,6 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 				}
 	        	
 	        }
-	        clicked.setBackgroundColor(R.color.black);
-=======
-		//clicked.setBackgroundColor(R.color.orange);
-		clicked.setVisibility(View.INVISIBLE);
-		switch(clicked.getId()){
-			case R.id.greennorth:
-				level.getBomb().cutWire(0,0);
-				break;
-			case R.id.yellownorth:
-				level.getBomb().cutWire(0, 1);
-				break;
-			case R.id.rednorth:
-				level.getBomb().cutWire(0, 2);
-				break;
-			case R.id.greensouth:
-				level.getBomb().cutWire(1,0);
-				break;
-			case R.id.yellowsouth:
-				level.getBomb().cutWire(1, 1);
-				break;
-			case R.id.redsouth:
-				level.getBomb().cutWire(1, 2);
-				break;
-			case R.id.greenwest:
-				level.getBomb().cutWire(2, 0);
-				break;
-			case R.id.yellowwest:
-				level.getBomb().cutWire(2,1);
-				break;
-			case R.id.redwest:
-				level.getBomb().cutWire(2, 2);
-				break;
-			case R.id.greeneast:
-				level.getBomb().cutWire(3, 0);
-				break;
-			case R.id.yelloweast:
-				level.getBomb().cutWire(3, 1);
-				break;
-			case R.id.redeast:
-				level.getBomb().cutWire(3, 2);
-				break;
-		}
->>>>>>> 97990f503eb08cd2229b80993a6dd5480d80138e
 		
 	}
 
@@ -232,6 +185,7 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 		finish();
 	}
 
+	
 	/*
 	 * Birtum tilkynningu þegar sprengjan springur.
 	 * @see hopur20.blownaway.BombStateListener#onBombExploded()
@@ -248,8 +202,17 @@ public class Game extends Activity implements OnClickListener, BombStateListener
 	 * Birtum tíma sem eftir er á klukku.
 	 * @see hopur20.blownaway.BombStateListener#onTick(long)
 	 */
+	
 	public void onTick(long timeRemaining) {
+		
 		 TextView timerDisplay = (TextView) findViewById(R.id.timer);
 		 timerDisplay.setText("Time: " + timeRemaining);
+		 
+		 if (timeRemaining<20 && soundPlaying==false)
+		 {
+			 soundPlaying=true;
+			 mp.start();
+			
+		 }
 	}
 }

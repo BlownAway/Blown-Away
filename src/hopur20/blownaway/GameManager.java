@@ -106,6 +106,7 @@ public class GameManager extends Activity implements OnClickListener {
 			catch(ActivityNotFoundException e){e.toString();}	
 			hopur20.blownaway.HiScoreDisplay.endscore = score;
 			hopur20.blownaway.HiScoreDisplay.addingscore=true;
+			finish();
 			
 		}
 		
